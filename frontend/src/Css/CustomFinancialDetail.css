@@ -1,0 +1,9 @@
+.text-wrap-break {
+  word-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+  text-align: center;
+}
+.info-card {
+  min-height: 150px;
+}

@@ -1,0 +1,42 @@
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-overlay img {
+  max-width: 90%;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Close button styling */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6); /* ensures visibility on all backgrounds */
+  padding: 5px 12px;
+  border-radius: 8%;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  z-index: 10000;
+}
+
+.close-btn:hover {
+  transform: scale(1.2);
+  background-color: rgba(255, 0, 0, 0.8); /* red hover effect */
+}

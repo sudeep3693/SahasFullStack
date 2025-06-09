@@ -1,0 +1,14 @@
+.details-bg {
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  min-height: 100vh;
+}
+
+.hover-title {
+  cursor: pointer;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.hover-title:hover {
+  transform: scale(1.05);
+  color: #17d4fc;
+}

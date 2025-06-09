@@ -1,0 +1,83 @@
+/* Base styles */
+.footer-section {
+  background-color: #f8f9fa;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.footer-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #343a40;
+}
+
+.footer-text,
+.footer-list li,
+address {
+  color: #6c757d;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.footer-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.footer-list li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-list li:hover {
+  color: #007bff;
+  cursor: pointer;
+}
+
+.footer-divider {
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.footer-copy {
+  color: #6c757d;
+}
+
+/* === Mobile Enhancements === */
+@media (max-width: 576px) {
+  .footer-section {
+    padding: 2rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* center overall content */
+  }
+
+  .footer-section .row {
+    width: 100%;
+  }
+
+  .footer-section .col,
+  .footer-section .col-12,
+  .footer-section .col-sm-6,
+  .footer-section .col-md-6,
+  .footer-section .col-lg-3 {
+    text-align: left !important;   /* Keep text left-aligned */
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .footer-title {
+    font-size: 1.1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .footer-text,
+  address {
+    font-size: 0.95rem;
+  }
+
+  .footer-divider {
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+  }
+}

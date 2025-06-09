@@ -1,0 +1,10 @@
+/* Optional: Smooth scrolling */
+.overflow-auto {
+  scroll-behavior: smooth;
+}
+.horizontal-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+}
+

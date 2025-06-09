@@ -1,0 +1,23 @@
+.contact-section {
+  background-color: #fff;
+}
+
+.contact-section input,
+.contact-section textarea {
+  border-radius: 0;
+  border: 1px solid #ccc;
+  box-shadow: none;
+  transition: border-color 0.2s;
+}
+
+.contact-section input:focus,
+.contact-section textarea:focus {
+  border-color: #dc3545;
+  outline: none;
+  box-shadow: none;
+}
+
+.contact-section button {
+  border-radius: 3px;
+  letter-spacing: 1px;
+}
