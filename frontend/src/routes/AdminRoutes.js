@@ -11,9 +11,9 @@ const AdminRoutes = [
     key="admin"
     path="/admin"
     element={
-      <PrivateRoute>
+      
         <Admin />
-      </PrivateRoute>
+      
     }
   >
     <Route index element={<Body />} />

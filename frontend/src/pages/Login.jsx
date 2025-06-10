@@ -1,33 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import '../Css/LoginPage.css';
-import { auth } from '../config/firebase';
-import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
-
+import axios from 'axios';
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const togglePassword = () => setShowPassword(!showPassword);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const path = "http://localhost:3001"
 
- 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        navigate('/admin');
-      }
-    });
-
-    return () => unsubscribe(); 
-  }, [navigate]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
-      await signInWithEmailAndPassword(auth, username, password);
-      navigate('/admin');
+      const response = await axios.post(`${path}/admin/login`, {
+        username,
+        password
+      });
+
+      if (response.status === 200) {
+        navigate('/admin');
+      }
     } catch (error) {
       alert('Login failed: ' + error.message);
     }

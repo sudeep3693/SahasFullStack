@@ -1,5 +1,5 @@
 import { Container, Row, Col } from 'react-bootstrap';
-import AdminNavBar from '../AdminComponents/AdminNavbar';
+import AdminNavBar from '../AdminComponents/AdminNavbar.jsx';
 import { Outlet } from 'react-router-dom';
 
 function Admin() {

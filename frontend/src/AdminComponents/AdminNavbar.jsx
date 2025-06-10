@@ -1,27 +1,14 @@
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
-import { auth } from "../config/firebase";
-import { signOut } from "firebase/auth";
 import { FiLogOut } from "react-icons/fi";
 import logo from '../Images/logo.jpeg';
 import '../Css/App.css';
 
 function AdminNavBar() {
 
-  
-
   const handleLogout = () => {
-    signOut(auth)
-      .then(() => {
-        console.log("User signed out.");
-        
-      })
-      .catch((error) => {
-        console.error("Error signing out:", error);
-      });
+    console.log("logged out");
   };
-
-
 
   return (
     <Navbar expand="md" className="bg-body-tertiary">
