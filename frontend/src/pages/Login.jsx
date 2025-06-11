@@ -1,15 +1,19 @@
-import React, { useEffect, useState } from 'react';
+
+
+import React, { useState, useContext } from 'react';
 import '../Css/LoginPage.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { AuthContext } from '../Authentication/AuthContext';
+
 const LoginPage = () => {
+  const { login } = useContext(AuthContext); // 👈 import login function
   const [showPassword, setShowPassword] = useState(false);
   const togglePassword = () => setShowPassword(!showPassword);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
-  const path = "http://localhost:3001"
-
+  const path = "http://localhost:3001";
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -21,6 +25,7 @@ const LoginPage = () => {
       });
 
       if (response.status === 200) {
+        login(); // ✅ Set localStorage + update context state
         navigate('/admin');
       }
     } catch (error) {
@@ -28,7 +33,7 @@ const LoginPage = () => {
     }
   };
 
-  return (
+ return (
     <div className="login-page">
       <div className="overlay">
         <div className="login-box">

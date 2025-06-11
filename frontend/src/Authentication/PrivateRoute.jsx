@@ -1,14 +1,9 @@
-// import React from 'react';
-// import { Navigate } from 'react-router-dom';
+// Authentication/PrivateRoute.js
+import React from 'react';
+import { Navigate, Outlet } from 'react-router-dom';
 
-// const PrivateRoute = ({ children }) => {
-//   const [user, loading] = useAuthState(auth);
+const ProtectedRoute = ({ isAuthenticated }) => {
+  return isAuthenticated ? <Outlet /> : <Navigate to="/" replace />;
+};
 
-//   if (loading) {
-//     return <div>Loading...</div>; 
-//   }
-
-//   return user ? children : <Navigate to="/" />;
-// };
-
-// export default PrivateRoute;
+export default ProtectedRoute;
