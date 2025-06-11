@@ -10,6 +10,7 @@ import ScrollToTop from './ScrollToTop';
 import Downloads from '../Component/Downloads';
 import AllNews from '../Component/AllNews';
 import OurGallery from '../Component/OurGallery';
+import SecondaryNavbar from '../Component/SecondaryNavBar';
 
 function UserRoutes() {
   const productsRef = useRef(null);
@@ -25,6 +26,7 @@ function UserRoutes() {
   return (
     <>
       <ScrollToTop />
+      <SecondaryNavbar/>
       <Routes>
         
         <Route path="/" element={<User onProductsClick={scrollToProducts} onContactClick={scrollToContact} />}>
