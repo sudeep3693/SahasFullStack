@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 
-const SecondaryNavbar = () => {
+const SecondaryNavBar = () => {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > window.innerHeight) {
+      const isMediumOrLarger = window.innerWidth >= 768;
+      const isScrolledPast100vh = window.scrollY > window.innerHeight;
+
+      if (isMediumOrLarger && isScrolledPast100vh) {
         setShow(true);
       } else {
         setShow(false);
@@ -13,9 +16,14 @@ const SecondaryNavbar = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleScroll); 
 
-    // cleanup
-    return () => window.removeEventListener('scroll', handleScroll);
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
   }, []);
 
   return (
@@ -26,7 +34,7 @@ const SecondaryNavbar = () => {
           top: 0,
           left: 0,
           right: 0,
-          height: '50px',
+          height: '40px',
           backgroundColor: 'rgba(0,0,0,0.8)',
           color: 'white',
           display: 'flex',
@@ -34,11 +42,11 @@ const SecondaryNavbar = () => {
           justifyContent: 'center',
           zIndex: 1000,
         }}>
-          I'm visible after you scroll 100vh down!
+          I'm visible after you scroll 100vh down (desktop only)!
         </div>
       )}
     </>
   );
 };
 
-export default SecondaryNavbar;
+export default SecondaryNavBar;

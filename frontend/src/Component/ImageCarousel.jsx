@@ -1,43 +1,24 @@
 import React from 'react';
-import first from '../Images/CarouselImages/first.jpg';
-import second from '../Images/CarouselImages/second.jpg';
-import third from '../Images/CarouselImages/third.jpg';
 import { Carousel } from 'react-bootstrap';
+import useCarouselImages from '../AdminComponents/hooks/useCarouselImage';
 import '../Css/CarouselCss.css';
 
-
 function ImageCarousel() {
+  const { data: images, loading, error } = useCarouselImages();
 
-  const image_detail = [
-
-    { image: first, title: "first image", alternative: "first image not found" },
-    { image: second, title: "second image", alternative: "first image not found" },
-    { image: third, title: "second image", alternative: "first image not found" },
-    { image: second, title: "second image", alternative: "first image not found" },
-    { image: third, title: "second image", alternative: "first image not found" },
-
-  ]
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error loading carousel images.</p>;
 
   return (
-
-
     <Carousel>
-      {image_detail.map((img, k) => (
-        <Carousel.Item key={k}>
+      {images.map((filename, index) => (
+        <Carousel.Item key={index}>
           <img
             className="d-block w-100"
-            src={img.image}
-            alt={img.alternative}
-            style={{
-              aspectRatio: '4 / 3'
-            }}
+            src={`http://localhost:3001/uploads/carousel/${filename}`}
+            alt={`Carousel image ${index + 1}`}
+            style={{ aspectRatio: '4 / 3', objectFit: 'cover' }}
           />
-
-          {/* Caption Container */}
-          <div className="carousel-caption-custom px-3 py-2">
-            <h3 className="caption-title">{img.title}</h3>
-
-          </div>
         </Carousel.Item>
       ))}
     </Carousel>

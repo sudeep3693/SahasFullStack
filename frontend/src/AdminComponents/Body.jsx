@@ -22,8 +22,23 @@ function Body() {
                     <Col sm={12} md={6} lg={4}>
                         <BodyComponent
                             title="Hi"
-                            description="Members Details"
-                            onClick={()=>handleCardClick("memberDetails")}
+                            description="Notice"
+                            onClick={()=>handleCardClick("notice")}
+                        />
+                    </Col>
+                     <Col sm={12} md={6} lg={4}>
+                        <BodyComponent
+                            title="Hi"
+                            description="Institutional Details"
+                            onClick={()=>handleCardClick("institutionalDetails")}
+                        />
+                    </Col>
+
+                    <Col sm={12} md={6} lg={4}>
+                        <BodyComponent
+                            title="Hi"
+                            description="SlideShow Images"
+                            onClick={()=>handleCardClick("carouselImage")}
                         />
                     </Col>
 

@@ -1,9 +1,11 @@
 // routes/auth.js
-import { request, Router } from 'express';
+import { Router } from 'express';
 import mongoose from 'mongoose';
 import Credintal from '../Model/Credintals.js';
 import InstitutionalDetail from '../Model/InstitutionalProfile.js';
-
+import multer from 'multer';
+import fs from 'fs';
+import path from 'path';
 mongoose.connect('mongodb://localhost:27017/Sahas', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -75,6 +77,72 @@ router.get('/institutional/getAll', async (request,response)=>{
 
   }
 })
+
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => cb(null, 'uploads/carousel'),
+  filename: (req, file, cb) => {
+    const uploadDir = 'uploads/carousel/';
+    const finalName = `${Date.now()}-${file.originalname}`;
+
+    // Check if file exists and delete it
+    const filePath = path.join(uploadDir, finalName);
+    if (fs.existsSync(filePath)) {
+      fs.unlinkSync(filePath);
+    }
+
+    cb(null, finalName);
+  },
+});
+
+
+const upload = multer({ storage });
+
+router.post('/carousel', upload.array('images'), (req, res) => {
+  try {
+    const files = req.files;
+    const descriptions = Array.isArray(req.body.descriptions)
+      ? req.body.descriptions
+      : [req.body.descriptions];
+
+    if (!files || files.length === 0) {
+      return res.status(400).json({ message: 'No files uploaded' });
+    }
+
+    console.log('Descriptions:', descriptions);
+    console.log('Files:', files.map(f => f.filename));
+
+    return res.status(200).json({ message: 'Images updated successfully' });
+  } catch (err) {
+    console.error('Upload error:', err);
+    res.status(500).json({ message: 'Upload failed on server' });
+  }
+});
+
+router.get('/carousel', (req, res) => {
+  fs.readdir('./uploads/carousel', (err, files) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).json({ error: 'Failed to read directory' });
+    }
+    console.log("successfully fetched carousel images");
+    res.status(200).json(files); // send filenames
+  });
+});
+
+// DELETE an image
+router.delete('/carousel/:filename', (req, res) => {
+  const filename = req.params.filename;
+  const filePath = path.join('./uploads/carousel', filename);
+
+  if (fs.existsSync(filePath)) {
+    fs.unlinkSync(filePath);
+    return res.status(200).json({ message: 'Image deleted' });
+  } else {
+    return res.status(404).json({ error: 'File not found' });
+  }
+});
+
 
 
 export default router;

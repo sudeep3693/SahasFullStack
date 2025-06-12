@@ -6,7 +6,9 @@ import AuthRoutes from './routes/AuthRoutes';
 import { AuthContext } from './Authentication/AuthContext';
 
 function App() {
-  const { isAuthenticated } = useContext(AuthContext);
+  const { isAuthenticated, loading } = useContext(AuthContext);
+
+  if (loading) return <div>Loading...</div>; // Prevent premature route rendering
 
   return (
     <Router>
