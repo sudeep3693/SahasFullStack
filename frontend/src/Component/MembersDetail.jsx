@@ -12,6 +12,7 @@ import {
 } from 'react-icons/bs';
 import axios from "axios";
 import { useEffect, useState } from "react";
+import config from '../Constants/config';
 
 const color = '#85193C';
 
@@ -22,7 +23,7 @@ function MembersDetail() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get("http://localhost:3001/financial/getAll");
+        const res = await axios.get(`${config.baseUrl}/financial/getAll`);
         const data = res.data[0]; // Adjust if backend returns different format
         setUpdatedDate(data.academicYear);
         setFinancialData([

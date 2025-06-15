@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import '../Css/Footer.css';
 import cooperative from '../Data/AboutSahas';
 import { useNavigate } from 'react-router-dom';
+import useBasicDetails from '../FetchData/useBasicDetails';
 
 const Footer = () => {
   const navigate = useNavigate();
@@ -15,10 +16,15 @@ const Footer = () => {
     navigate(`/`);
   }
 
-  const handleGallary = ()=>{
+  const handleGallery = ()=>{
 
-    navigate(`/gallary`);
+    navigate(`/gallery`);
   }
+  const { data: formData, loading, error } = useBasicDetails();
+
+  if (loading) return null;
+  if (error) return <p className="text-danger text-center">Error loading contact details.</p>;
+
   return (
     <footer className="footer-section text-dark py-5">
       <Container>
@@ -36,7 +42,7 @@ const Footer = () => {
               <li onClick={handleHome}>Home</li>
               <li onClick={handlDownload}>Downloads</li>
               <li>Our Departments</li>
-              <li onClick={handleGallary}>Our Gallery</li>
+              <li onClick={handleGallery}>Our Gallery</li>
               <li>
                 <a href="/login" className="text-decoration-none text-dark">Admin</a>
               </li>
@@ -47,12 +53,12 @@ const Footer = () => {
           <Col xs={12} md={6} lg={4}>
             <h5 className="footer-title">Contact Us</h5>
             <address className="footer-text small">
-              Parsyang,<br />
-              Pokhara, Nepal<br />
-              P.O. Box: 11683<br />
-              Phone: +977-01-4954046, 4964458<br />
-              Fax: +977-01-4987597<br />
-              Email: sahas.coop@gmail.com
+              {formData.location} {formData.district}<br />
+              {formData.province}, Nepal<br />
+              P.O. Box: {formData.pbox}<br />
+              Phone: {formData.telephone}, {formData.mobile}<br />
+              Fax: {formData.fax}<br />
+              Email: {formData.email}
             </address>
           </Col>
         </Row>

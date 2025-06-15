@@ -26,7 +26,7 @@ function UserRoutes() {
   return (
     <>
       <ScrollToTop />
-      <SecondaryNavbar/>
+      <SecondaryNavbar onProductsClick={scrollToProducts} onContactClick={scrollToContact}/>
       <Routes>
         
         <Route path="/" element={<User onProductsClick={scrollToProducts} onContactClick={scrollToContact} />}>
@@ -37,7 +37,7 @@ function UserRoutes() {
           <Route path="aboutDetail" element={<AboutDetail />} />
           <Route path = "all-news" element={<AllNews/>}/>
           <Route path = "downloads" element = {<Downloads/>}/>
-          <Route path = "/gallary" element={<OurGallery/>}/>
+          <Route path = "/gallery" element={<OurGallery/>}/>
         </Route>
       </Routes>
     </>

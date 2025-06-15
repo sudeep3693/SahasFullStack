@@ -50,7 +50,7 @@ function OurProducts() {
         className="d-flex flex-column align-items-center pt-4 text-center"
       >
         <div className="fs-2 fw-bold">Our Products</div>
-        <div>Explore products we offer to make your life easier</div>
+        <div>Explore products we offer </div>
       </div>
 
       {/* Scrollable or Centered Cards */}

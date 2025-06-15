@@ -2,8 +2,7 @@ import { Container, Row, Col, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import News from './News';
 
-// Simulated news data length (can be dynamic)
-const totalNews = 5; // e.g., from API or props
+const totalNews = 5; 
 
 function NewsNotice() {
   const navigate = useNavigate();

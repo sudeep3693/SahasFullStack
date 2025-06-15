@@ -5,11 +5,12 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import logo from '../Images/logo.jpeg';
+import logo from '../Images/dallo.png';
 import SocialIcons from '../Component/SocialMedia';
 import ContactIcons from '../Component/HeaderContact';
 import '../Css/App.css';
-import React from 'react';
+import useBasicDetails from '../FetchData/useBasicDetails';
+
 
 function NavBar({ onProductsClick, onContactClick }) {
   const [showOffcanvas, setShowOffcanvas] = useState(false);
@@ -56,7 +57,7 @@ function NavBar({ onProductsClick, onContactClick }) {
 
     e.preventDefault();
     handleClose();
-      navigate(`/gallary`);
+      navigate(`/gallery`);
 
   }
   const messageFromGM = ()=>{
@@ -64,17 +65,29 @@ function NavBar({ onProductsClick, onContactClick }) {
     navigate(`messageDetails/2`);
   }
 
+  const handleHome =(e)=>
+  {
+
+    e.preventDefault();
+    navigate(`/`);
+  }
+
+    const { data: formData, loading, error } = useBasicDetails();
+
+  if (loading) return null;
+  if (error) return <p className="text-danger text-center">Error loading contact details.</p>;
+
   return (
     <Navbar expand="md" className="bg-body-tertiary">
       <Container fluid className="d-flex justify-content-between align-items-center px-3">
 
         <Container fluid className="d-flex justify-content-between align-items-center px-3">
-          <Navbar.Brand onClick={(e) => e.preventDefault()} className="d-flex align-items-center ms-lg-5 ms-md-auto">
+          <Navbar.Brand onClick={handleHome} className="d-flex align-items-center ms-lg-5 ms-md-auto">
             <img
               src={logo}
               alt="Sahas Cooperative Logo"
               className="img-fluid"
-              style={{ maxHeight: '110px' }}
+              style={{ maxHeight: '110px', width:'700px' }}
             />
           </Navbar.Brand>
 
@@ -132,6 +145,14 @@ function NavBar({ onProductsClick, onContactClick }) {
                  Our Gallery
                 </Nav.Link>
 
+                <Nav.Link
+                  as="button"
+                  //onClick={handleGalleryClick}
+                  className="custom-nav-link fs-6 custom-button-link"
+                >
+                Reports
+                </Nav.Link>
+
 
                 <Nav.Link
                   as="button"
@@ -143,7 +164,7 @@ function NavBar({ onProductsClick, onContactClick }) {
               </Nav>
 
               <div className="mt-4 border-top pt-3 d-md-none text-black">
-                <ContactIcons phone="061-419128" email="sahas.coop@gmail.com" />
+                <ContactIcons phone={formData.telephone || "N/A"} email={formData.email || "N/A"} />
               </div>
             </Offcanvas.Body>
           </Navbar.Offcanvas>

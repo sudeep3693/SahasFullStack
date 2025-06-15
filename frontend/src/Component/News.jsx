@@ -1,5 +1,5 @@
 import logo from '../Images/Header_logo.jpg';
-
+import config from '../Constants/config';
 function News() {
     return (
         <div

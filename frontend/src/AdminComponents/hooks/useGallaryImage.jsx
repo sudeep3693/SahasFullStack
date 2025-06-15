@@ -1,7 +1,7 @@
 import useFetch from './useFetch';
-
+import config from '../../Constants/config';
 const useGalleryImages = () => {
-  return useFetch('http://localhost:3001/images/carousel');
+  return useFetch(`${config.baseUrl}/gallery`);
 };
 
 export default useGalleryImages;

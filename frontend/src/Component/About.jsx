@@ -8,7 +8,7 @@ function About() {
     };
   return (
     <div className="w-100 px-4 px-sm-3 px-md-5 py-5 bg-light my-4">
-      <div className="mx-auto" style={{ maxWidth: '900px' }}>
+      <div className="mx-auto" style={{ maxWidth: '1100px' }}>
         <h3 className="fw-bold text-dark mb-3"> {cooperative.topic}</h3>
         <p className="text-muted" style={{ fontSize: '1rem', lineHeight: '1.7' }}>
          {cooperative.detail}

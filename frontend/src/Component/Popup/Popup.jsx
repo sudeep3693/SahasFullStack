@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../../Css/Popup.css";
 import useNoticeImage from "../../AdminComponents/hooks/useNoticeImage";
 import { Container } from "react-bootstrap";
-
+import config from "../../Constants/config";
 const Popup = ({ onClose }) => {
   const { data: images, loading, error } = useNoticeImage();
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -57,7 +57,7 @@ const Popup = ({ onClose }) => {
           &times;
         </span>
         <img
-          src={`http://localhost:3001/uploads/notice/${images[currentIndex]}`}
+          src={`${config.baseUrl}/uploads/notice/${images[currentIndex]}`}
           alt="Popup"
           style={{
             maxWidth: "100%",

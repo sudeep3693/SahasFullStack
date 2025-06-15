@@ -5,7 +5,7 @@ import '../Css/LoginPage.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { AuthContext } from '../Authentication/AuthContext';
-
+import config from '../Constants/config';
 const LoginPage = () => {
   const { login } = useContext(AuthContext); // 👈 import login function
   const [showPassword, setShowPassword] = useState(false);
@@ -13,19 +13,19 @@ const LoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
-  const path = "http://localhost:3001";
+  
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(`${path}/admin/login`, {
+      const response = await axios.post(`${config.baseUrl}/admin/login`, {
         username,
         password
       });
 
       if (response.status === 200) {
-        login(); // ✅ Set localStorage + update context state
+        login(); 
         navigate('/admin');
       }
     } catch (error) {

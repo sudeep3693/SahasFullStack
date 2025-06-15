@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
 import { Button, Card, Form, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import AllImages from '../DetailImages';
 
-function HandleImages({getLink, postLink, selectionHeader, displayHeader, usedIn}) {
-  const [images, setImages] = useState([{ file: null}]);
+function HandleImages({ getLink, postLink, selectionHeader, displayHeader, usedIn }) {
+  const [images, setImages] = useState([]);
+  const navigate = useNavigate();
 
-  const handleAddNew = () => {
-    setImages([...images, { file: null }]);
+  const handleChange = (e) => {
+    const selectedFiles = Array.from(e.target.files);
+    const newFiles = selectedFiles.map(file => ({ file }));
+    setImages(prev => [...prev, ...newFiles]);
   };
 
   const handleRemove = (index) => {
@@ -16,29 +20,22 @@ function HandleImages({getLink, postLink, selectionHeader, displayHeader, usedIn
     setImages(updated);
   };
 
-  const handleChange = (index, type, value) => {
-    const updated = [...images];
-    updated[index][type] = value;
-    setImages(updated);
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const formData = new FormData();
-    images.forEach((item, index) => {
+    images.forEach(item => {
       if (item.file) {
-        formData.append(`images`, item.file);
+        formData.append('images', item.file);
       }
     });
 
     try {
-      const response = await axios.post(postLink, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
+      await axios.post(postLink, formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
       });
       alert('Upload successful!');
+      navigate('/admin');
     } catch (error) {
       console.error(error);
       alert('Upload failed.');
@@ -46,67 +43,70 @@ function HandleImages({getLink, postLink, selectionHeader, displayHeader, usedIn
   };
 
   return (
-
     <>
-    <div className="container my-5">
-      <h2 className="mb-4 text-success">{selectionHeader}</h2>
-      <Form onSubmit={handleSubmit}>
-        {images.map((item, index) => (
-          <Card key={index} className="mb-4 shadow-sm">
+      <div className="container my-5">
+        <h2 className="mb-4 text-success">{selectionHeader}</h2>
+        <Form onSubmit={handleSubmit}>
+          <Card className="mb-4 shadow-sm">
             <Card.Body>
               <Row className="align-items-center">
                 <Col md={6}>
-                  <Form.Group controlId={`formFile-${index}`}>
-                    <Form.Label><strong>Select Image</strong></Form.Label>
+                  <Form.Group controlId="formFile">
+                    <Form.Label><strong>Select Images</strong></Form.Label>
                     <Form.Control
                       type="file"
                       accept="image/*"
-                      onChange={(e) => handleChange(index, 'file', e.target.files[0])}
+                      multiple
+                      onChange={handleChange}
                       required
                     />
-                    {item.file && (
-                      <img
-                        src={URL.createObjectURL(item.file)}
-                        alt="Preview"
-                        className="img-thumbnail mt-2"
-                        style={{ width: '100%', maxHeight: '250px', objectFit: 'cover' }}
-                      />
-                    )}
                   </Form.Group>
-                </Col>
-
-
-                <Col md={2} className="text-end">
-                  {images.length > 1 && (
-                    <Button
-                      variant="outline-danger"
-                      className="mt-4"
-                      onClick={() => handleRemove(index)}
-                    >
-                      Remove
-                    </Button>
-                  )}
                 </Col>
               </Row>
             </Card.Body>
           </Card>
-        ))}
 
-        <div className="d-flex justify-content-between align-items-center">
-          <Button variant="success" onClick={handleAddNew}>
-            + Add New
-          </Button>
+          {images.length > 0 && (
+            <Row className="mb-4">
+              {images.map((item, index) => (
+                <Col key={index} md={4} className="mb-3">
+                  <Card className="shadow-sm">
+                    <Card.Img
+                      variant="top"
+                      src={URL.createObjectURL(item.file)}
+                      style={{ maxHeight: '200px', objectFit: 'cover' }}
+                    />
+                    <Card.Body className="text-center">
+                      <Button
+                        variant="outline-danger"
+                        size="sm"
+                        onClick={() => handleRemove(index)}
+                      >
+                        Remove
+                      </Button>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              ))}
+            </Row>
+          )}
 
-          <Button variant="primary" type="submit">
-            Submit All
-          </Button>
-        </div>
-      </Form>
-    </div>
+          <div className="d-flex justify-content-end">
+            <Button variant="primary" type="submit">
+              Submit All
+            </Button>
+          </div>
+        </Form>
+      </div>
 
-<hr/>
+      <hr />
 
-<AllImages usedIn={usedIn} getLink = {getLink} postLink={postLink} displayHeader = {displayHeader}/>
+      <AllImages
+        usedIn={usedIn}
+        getLink={getLink}
+        postLink={postLink}
+        displayHeader={displayHeader}
+      />
     </>
   );
 }

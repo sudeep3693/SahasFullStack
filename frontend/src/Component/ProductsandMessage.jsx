@@ -5,7 +5,7 @@ import '../Css/ProductAndMessage.css'; // Custom CSS (optional)
 
 function ProductsandMessage() {
   return (
-    <div style={{ backgroundColor: "#f9f9ff", padding: "40px 0" }}>
+    <div style={{ backgroundColor: "#f9f9ff", padding: "20px 0" }}>
       <Container fluid="md" className="py-2">
         <Row className="g-3">
           {/* Left Side: Our Products */}

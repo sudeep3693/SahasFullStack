@@ -41,6 +41,13 @@ function Body() {
                             onClick={()=>handleCardClick("carouselImage")}
                         />
                     </Col>
+                    <Col sm={12} md={6} lg={4}>
+                        <BodyComponent
+                            title="Hi"
+                            description="Gallery Images"
+                            onClick={()=>handleCardClick("galleryImage")}
+                        />
+                    </Col>
 
                 </Row>
             </Container>
