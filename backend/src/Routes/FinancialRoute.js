@@ -1,18 +1,11 @@
 // routes/auth.js
 import { Router } from 'express';
-import mongoose from 'mongoose';
 import InstitutionalDetail from '../Model/InstitutionalProfile.js';
-
-mongoose.connect('mongodb://localhost:27017/Sahas', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(() => console.log('Database connected successfully'))
-.catch((err) => console.error('Error while connecting to database:', err));
+import DBConnect from '../MiddleWare/DatabaseConnection.js';
 
 const router = Router();
 
-
+router.use(DBConnect);
 router.post('/add', async (request, response) => {
   try {
     console.log("Received data for institutional profile");

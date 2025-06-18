@@ -1,21 +1,15 @@
 import { Router } from 'express';
-import mongoose from 'mongoose';
-import BasicDetails from '../Model/BasicDetails.js'; // model name should match export
-
+import DBConnect from '../MiddleWare/DatabaseConnection.js';
+import BasicDetails from '../Model/BasicDetails.js';
 const router = Router();
 
-mongoose.connect('mongodb://localhost:27017/Sahas', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(() => console.log('Database connected successfully'))
-.catch((err) => console.error('Error while connecting to database:', err));
 
+router.use(DBConnect);
 router.post("/basicDetails", async (request, response) => {
   try {
-    const filter = {}; // since there's only one record expected
+    const filter = {};
     const update = request.body;
-    const options = { new: true, upsert: true }; // upsert = create if not found
+    const options = { new: true, upsert: true };
 
     const updatedData = await BasicDetails.findOneAndUpdate(filter, update, options);
 

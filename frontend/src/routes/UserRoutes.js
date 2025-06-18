@@ -11,6 +11,7 @@ import Downloads from '../Component/Downloads';
 import AllNews from '../Component/AllNews';
 import OurGallery from '../Component/OurGallery';
 import SecondaryNavbar from '../Component/SecondaryNavBar';
+import TeamDetailContainer from '../Component/TeamDetailContainer';
 
 function UserRoutes() {
   const productsRef = useRef(null);
@@ -38,6 +39,7 @@ function UserRoutes() {
           <Route path = "all-news" element={<AllNews/>}/>
           <Route path = "downloads" element = {<Downloads/>}/>
           <Route path = "/gallery" element={<OurGallery/>}/>
+          <Route path = "/team" element={<TeamDetailContainer/>}/> 
         </Route>
       </Routes>
     </>

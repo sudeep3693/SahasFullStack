@@ -8,6 +8,7 @@ import ContactDetails from '../AdminComponents/pages/ContactDetails';
 import InstitutionalDetail from '../AdminComponents/pages/InstitutionalDetail';
 import HandleImages from '../AdminComponents/pages/HandleImages';
 import config from '../Constants/config';
+import TeamDetail from '../AdminComponents/TeamDetail';
 const NotFound = () => (
   <div style={{ padding: '2rem', textAlign: 'center' }}>
     <h2>404 - Page Not Found</h2>
@@ -25,6 +26,7 @@ const AdminRoutes = (isAuthenticated) => [
     <Route path="/admin/*" element={<Admin />}>
       <Route index element={<Body />} />
       <Route path="contactDetails" element={<ContactDetails />} />
+      <Route path="teamDetails" element={<TeamDetail />} />
       <Route path="notice" element = {<HandleImages getLink={`${config.baseUrl}/uploads/notice`} postLink={`${config.baseUrl}/notice`} selectionHeader = {"Upload Notices"} displayHeader = {"Display Notices"} usedIn={'notice'}/>} />
       <Route path = "institutionalDetails" element = {<InstitutionalDetail/>}/>
       <Route path = "carouselImage" element = {<HandleImages getLink={`${config.baseUrl}/uploads/carousel`} postLink={`${config.baseUrl}/images/carousel`} selectionHeader = {"Upload Carousel Images"} displayHeader = {"Display Carousel Images"} usedIn={'carousel'}/>}/>
