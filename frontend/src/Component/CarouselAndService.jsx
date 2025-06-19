@@ -22,9 +22,9 @@ function CarouselAndService() {
             <Services />
           </div>
 
-          {/* Slogan - only visible on large screens and fills remaining space */}
+         
           <div className=" hide-on-medium d-flex flex-grow-1 mt-2">
-            <div className="bg-dark text-white p-4 rounded shadow text-center w-100 d-flex flex-column justify-content-center">
+            <div className="bg-success text-white p-4 rounded shadow text-center w-100 d-flex flex-column justify-content-center">
               <h4 className="fw-bold mb-2">{company.visionTitle}</h4>
               <p className="mb-0 fst-italic">{company.vision}</p>
             </div>

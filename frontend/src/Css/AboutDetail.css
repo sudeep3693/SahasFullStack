@@ -1,21 +1,39 @@
 .about-detail-bg {
-  background-color: #f9fafb; /* light background for contrast */
+  background-color: #E6F4EA; /* Soft Green BG for main background */
 }
 
 .about-content-box {
-  background-color: #ffffff;
+  background-color: #ffffff; /* White for clear content visibility */
   border-radius: 16px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 6px 20px rgba(0, 43, 91, 0.1); /* Subtle shadow with navy tone */
   font-size: 1rem;
   line-height: 1.6;
+  border: 1px solid #F5F5F5; /* Light Gray border for subtle edge */
 }
 
 .about-title {
   font-weight: 700;
-  color: #2c3e50;
+  color: #002B5B; /* Navy Blue for titles */
 }
 
 .about-text {
-  color: #555;
+  color: #001F3F; /* Deep Navy for readable body text */
   font-size: 1.05rem;
+}
+
+/* Optional: Add Accent Styling for CTAs inside content */
+
+.about-cta {
+  color: #ffffff;
+  background-color: #FFA500; /* Light Orange accent */
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.about-cta:hover {
+  background-color: #e69500;
 }

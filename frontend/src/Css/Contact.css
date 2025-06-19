@@ -1,23 +1,50 @@
 .contact-section {
-  background-color: #fff;
+  background-color: #E6F4EA; /* Soft Green BG (Light Shade) for main background */
+  padding: 2rem;
 }
 
 .contact-section input,
 .contact-section textarea {
   border-radius: 0;
-  border: 1px solid #ccc;
+  border: 1px solid #F5F5F5; /* Light Gray border */
   box-shadow: none;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s ease;
+  color: #001F3F; /* Deep Navy text inside inputs */
+  background-color: white;
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.contact-section input::placeholder,
+.contact-section textarea::placeholder {
+  color: #002B5B; /* Navy Blue placeholder text */
+  opacity: 0.7;
 }
 
 .contact-section input:focus,
 .contact-section textarea:focus {
-  border-color: #dc3545;
+  border-color: #28A745; /* Primary Green on focus */
   outline: none;
-  box-shadow: none;
+  box-shadow: 0 0 6px #28A745aa; /* subtle green glow */
+  background-color: #fff;
 }
 
 .contact-section button {
   border-radius: 3px;
   letter-spacing: 1px;
+  background-color: #28A745; /* Primary Green */
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-section button:hover,
+.contact-section button:focus {
+  background-color: #FFA500; /* Accent Light Orange on hover/focus */
+  outline: none;
+  color: #001F3F; /* Deep Navy text for contrast */
 }

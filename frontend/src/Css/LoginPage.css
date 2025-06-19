@@ -12,20 +12,21 @@
 
 /* Semi-transparent overlay */
 .overlay {
-  background-color: rgba(0, 0, 0, 0.55);
+  background-color: rgba(230, 244, 234, 0.85); /* Soft Green BG with opacity */
   padding: 2rem;
   border-radius: 10px;
   width: 100%;
   max-width: 420px;
+  box-shadow: 0 4px 15px rgba(0, 31, 63, 0.25); /* Deep Navy shadow */
 }
 
 /* Login box */
 .login-box {
-  background: #fff;
+  background: #F5F5F5; /* Light Gray background */
   padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
-  color: #333;
+  box-shadow: 0 10px 25px rgba(0, 31, 63, 0.2); /* Deep Navy shadow */
+  color: #001F3F; /* Deep Navy text */
 }
 
 .login-title {
@@ -33,7 +34,7 @@
   margin-bottom: 1.8rem;
   font-weight: 600;
   font-size: 1.5rem;
-  color: #211C84;
+  color: #002B5B; /* Navy Blue */
 }
 
 .form-group {
@@ -44,7 +45,7 @@
   display: block;
   margin-bottom: 0.5rem;
   font-weight: 500;
-  color: #333;
+  color: #001F3F; /* Deep Navy */
 }
 
 input[type='email'],
@@ -52,17 +53,19 @@ input[type='password'],
 input[type='text'] {
   width: 100%;
   padding: 12px 14px;
-  border: 1px solid #ccc;
+  border: 1px solid #F5F5F5; /* Light Gray border */
   border-radius: 6px;
   font-size: 1rem;
   outline: none;
   transition: border 0.2s ease;
   margin-bottom: 0.2rem;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06);
+  background-color: #fff;
+  color: #001F3F; /* Deep Navy text */
 }
 
 input:focus {
-  border-color: #211C84;
+  border-color: #28A745; /* Primary Green on focus */
 }
 
 .password-wrapper {
@@ -80,7 +83,7 @@ input:focus {
   transform: translateY(-50%);
   background: white;
   border: none;
-  color: #211C84;
+  color: #28A745; /* Primary Green */
   font-size: 1.1rem;
   cursor: pointer;
   z-index: 5;
@@ -89,7 +92,7 @@ input:focus {
 }
 
 .toggle-password:hover {
-  color: #181360;
+  color: #22863a; /* Darker green on hover */
 }
 
 .forgot-password {
@@ -99,7 +102,7 @@ input:focus {
 }
 
 .forgot-password a {
-  color: #211C84;
+  color: #FFA500; /* Accent Light Orange */
   font-size: 0.9rem;
   text-decoration: none;
 }
@@ -111,7 +114,7 @@ input:focus {
 .login-button {
   width: 100%;
   padding: 12px;
-  background-color: #211C84;
+  background-color: #28A745; /* Primary Green */
   color: white;
   border: none;
   border-radius: 6px;
@@ -121,7 +124,7 @@ input:focus {
 }
 
 .login-button:hover {
-  background-color: #181360;
+  background-color: #1e7e34; /* Darker Green */
 }
 
 /* Mobile responsiveness */

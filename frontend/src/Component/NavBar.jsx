@@ -65,6 +65,12 @@ function NavBar({ onProductsClick, onContactClick }) {
     navigate(`messageDetails/2`);
   }
 
+    const teamDetail = ()=>{
+
+    navigate(`team`);
+  }
+
+
   const handleHome =(e)=>
   {
 
@@ -117,7 +123,7 @@ function NavBar({ onProductsClick, onContactClick }) {
                 <NavDropdown title="About Us" id="about-dropdown" className="custom-nav-link">
                   <NavDropdown.Item href="#introduction" className="custom-dropdown-item">Introduction</NavDropdown.Item>
                   <NavDropdown.Item onClick={messageFromGM} className="custom-dropdown-item">Message from GM</NavDropdown.Item>
-                  <NavDropdown.Item href="#our-team" className="custom-dropdown-item">Our Team</NavDropdown.Item>
+                  <NavDropdown.Item onClick = {teamDetail} className="custom-dropdown-item">Our Team</NavDropdown.Item>
                   <NavDropdown.Item href="#branches" className="custom-dropdown-item">Branches</NavDropdown.Item>
                 </NavDropdown>
 

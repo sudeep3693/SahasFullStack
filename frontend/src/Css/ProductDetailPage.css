@@ -1,14 +1,24 @@
 .details-bg {
-  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  /* Background using Soft Green BG fading to Light Gray for subtlety */
+  background: linear-gradient(
+    to right,
+    #E6F4EA 0%,    /* Soft Green BG */
+    #F5F5F5 50%,   /* Light Gray */
+    #E6F4EA 100%
+  );
   min-height: 100vh;
+  color: #001F3F; /* Deep Navy text for readability */
+  padding: 2rem;
 }
 
 .hover-title {
   cursor: pointer;
   transition: transform 0.3s ease, color 0.3s ease;
+  color: #002B5B; /* Navy Blue for headers */
+  font-weight: 600;
 }
 
 .hover-title:hover {
   transform: scale(1.05);
-  color: #17d4fc;
+  color: #FFA500; /* Accent Light Orange on hover for call-to-action emphasis */
 }

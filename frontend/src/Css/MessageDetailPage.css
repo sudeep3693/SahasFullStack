@@ -1,11 +1,10 @@
 .message-detail-bg {
-  background-color: #f9f9fb;
-
+  background-color: #E6F4EA; /* Soft Green BG - Light Shade, main background */
 }
 
-
 .message-oath-box {
-  background-color: #fff;
+  background-color: #F5F5F5; /* Light Gray - Neutral for container */
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 12px rgba(0, 31, 63, 0.06); /* Deep Navy subtle shadow */
+  border: 1px solid #F5F5F5; /* Light Gray border */
 }

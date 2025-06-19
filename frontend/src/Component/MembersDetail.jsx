@@ -14,7 +14,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import config from '../Constants/config';
 
-const color = '#85193C';
+const color = '#002B5B';
 
 function MembersDetail() {
   const [financialData, setFinancialData] = useState([]);
@@ -45,7 +45,7 @@ function MembersDetail() {
   return (
     <div className="py-5 px-xs-1 px-sm-1 px-3" style={{ backgroundColor: '#f8f9fa' }}>
       <Container fluid>
-        <Row className="mb-4 align-items-center justify-content-between px-2">
+        <Row className="mb-1 align-items-center justify-content-between px-2">
           <Col xs={12} md="auto" className="text-center mx-auto">
             <h2 className="fw-bold pb-2 d-inline-block" style={{ color }}>
               -Institutional Profile-

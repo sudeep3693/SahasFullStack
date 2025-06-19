@@ -25,10 +25,7 @@ function OurProducts() {
         scrollIndex = 0;
         scrollContainer.scrollTo({ left: 0, behavior: 'smooth' });
       } else {
-        scrollContainer.scrollBy({
-          left: cardWidth,
-          behavior: 'smooth',
-        });
+        scrollContainer.scrollBy({ left: cardWidth, behavior: 'smooth' });
         scrollIndex += 1;
       }
     };
@@ -38,11 +35,11 @@ function OurProducts() {
   }, [shouldAutoScroll]);
 
   return (
-    <div className="position-relative">
+    <div className="position-relative" style={{ backgroundColor: '#E6F4EA' /* Soft Green BG */ }}>
       {/* Header */}
       <div
         style={{
-          backgroundColor: '#3a0ca3',
+          backgroundColor: '#002B5B', // Navy Blue (Secondary)
           height: '200px',
           color: 'white',
           zIndex: 1,
@@ -70,8 +67,15 @@ function OurProducts() {
               {Products.map((product, i) => (
                 <div
                   key={i}
-                  className="product-card text-center"
-                  style={{ minWidth: '280px', flex: shouldAutoScroll ? '0 0 auto' : '1 0 280px' }}
+                  className="product-card text-center p-3"
+                  style={{
+                    minWidth: '280px',
+                    flex: shouldAutoScroll ? '0 0 auto' : '1 0 280px',
+                    backgroundColor: '#F5F5F5', // Light Gray (Neutral BG)
+                    border: '1px solid #ccc',
+                    borderRadius: '8px',
+                    boxShadow: '0 2px 6px rgba(0, 0, 0, 0.1)',
+                  }}
                 >
                   <Details
                     title={product.productTitle}
@@ -90,5 +94,4 @@ function OurProducts() {
     </div>
   );
 }
-
 export default OurProducts;
