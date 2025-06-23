@@ -44,7 +44,6 @@
 
 .contact-section button:hover,
 .contact-section button:focus {
-  background-color: #FFA500; /* Accent Light Orange on hover/focus */
+  background-color: #006400; /* Accent Light Orange on hover/focus */
   outline: none;
-  color: #001F3F; /* Deep Navy text for contrast */
 }

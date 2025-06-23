@@ -9,12 +9,12 @@ function About() {
   return (
     <div className="w-100 px-4 px-sm-3 px-md-5 py-5 bg-light my-4">
       <div className="mx-auto" style={{ maxWidth: '1100px' }}>
-        <h3 className="fw-bold text-dark mb-3"> {cooperative.topic}</h3>
-        <p className="text-muted" style={{ fontSize: '1rem', lineHeight: '1.7' }}>
+        <h3 className="fw-bold mb-3" style={{color:'#001F3F'}}> {cooperative.topic}</h3>
+        <p className="text-muted" style={{ fontSize: '1rem', lineHeight: '1.7', color:'#28A745' }}>
          {cooperative.detail}
         </p>
         <button
-          className="mt-3 btn btn-outline-primary px-4 py-2"
+          className="mt-3 btn btn-outline-success px-4 py-2"
           style={{ fontSize: '1rem', borderRadius: '0.5rem' }}
           onClick={handleClick}
         >

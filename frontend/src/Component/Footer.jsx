@@ -44,7 +44,7 @@ const Footer = () => {
               <li>Our Departments</li>
               <li onClick={handleGallery}>Our Gallery</li>
               <li>
-                <a href="/login" className="text-decoration-none text-dark">Admin</a>
+                <a href="/login" className="text-decoration-none text-white">Admin</a>
               </li>
 
             </ul>

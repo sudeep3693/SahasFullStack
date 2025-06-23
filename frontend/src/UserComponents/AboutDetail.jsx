@@ -1,6 +1,6 @@
 import { Col, Container, Row } from "react-bootstrap";
 import cooperative from "../Data/AboutSahas";
-import "../Css/AboutDetail.css"; // Create and link the CSS file
+import "../Css/AboutDetail.css"; // Now contains updated colors
 
 function AboutDetail() {
   return (
@@ -8,9 +8,9 @@ function AboutDetail() {
       <Container>
         <Row className="justify-content-center">
           <Col xs={12} md={12} lg={12}>
-            <div className="about-content-box p-4 rounded-4 shadow-sm bg-white">
+            <div className="about-content-box p-4 rounded-4 shadow-sm">
               <h2 className="text-center mb-4 about-title">{cooperative.topic}</h2>
-              <p className="about-text" style={{ whiteSpace: "pre-line" }}>
+              <p className="about-text">
                 {cooperative.detail}
               </p>
             </div>

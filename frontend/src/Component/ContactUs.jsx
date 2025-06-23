@@ -30,7 +30,7 @@ const ContactForm = () => {
       <Container>
         <Row className="justify-content-center mb-4 text-center">
           <Col lg={8}>
-            <h2 className="fw-bold mb-2">Contact Us</h2>
+            <h2 className="fw-bold mb-2" style={{color:"#001F3F"}}>Contact Us</h2>
             <p className="text-muted">
               Get connected with us by simply filling up info below.
             </p>
@@ -80,7 +80,7 @@ const ContactForm = () => {
             <Col>
               <Button
                 type="submit"
-                variant="danger"
+                variant="success"
                 className="px-5 py-2 text-uppercase fw-semibold"
               >
                 Contact Us

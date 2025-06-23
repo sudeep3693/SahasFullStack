@@ -65,18 +65,7 @@ function OurProducts() {
           >
             <div className={`d-flex gap-4 ${shouldAutoScroll ? 'flex-nowrap' : 'justify-content-center flex-wrap'}`}>
               {Products.map((product, i) => (
-                <div
-                  key={i}
-                  className="product-card text-center p-3"
-                  style={{
-                    minWidth: '280px',
-                    flex: shouldAutoScroll ? '0 0 auto' : '1 0 280px',
-                    backgroundColor: '#F5F5F5', // Light Gray (Neutral BG)
-                    border: '1px solid #ccc',
-                    borderRadius: '8px',
-                    boxShadow: '0 2px 6px rgba(0, 0, 0, 0.1)',
-                  }}
-                >
+               
                   <Details
                     title={product.productTitle}
                     subtitle={product.productSubTitle}
@@ -85,7 +74,7 @@ function OurProducts() {
                     id={product.productId}
                     others={product.Topics}
                   />
-                </div>
+               
               ))}
             </div>
           </div>

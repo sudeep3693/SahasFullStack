@@ -12,7 +12,7 @@ function MessageBox({ position, descriptionList, image, id }) {
 
   return (
     <div
-      className="message-box shadow-sm rounded-4 p-3 mb-4 mx-auto"
+      className="message-box shadow-sm rounded-4 mb-4 mx-auto"
       onClick={handleReadMore}
       onMouseEnter={(e) => {
         e.currentTarget.classList.add("hovered");
@@ -21,20 +21,20 @@ function MessageBox({ position, descriptionList, image, id }) {
         e.currentTarget.classList.remove("hovered");
       }}
     >
-      {/* Top: Position */}
-      <div className="position-label mb-2 text-center">
+      {/* Full-width Heading */}
+      <div className="position-label">
         <h6>{position}</h6>
       </div>
 
       {/* Main Content */}
-      <div className="d-flex">
+      <div className="d-flex p-2">
         {/* Left: Image */}
-        <div className="image-container me-3">
+        <div className="image-container me-2">
           <img src={image} alt="Profile" />
         </div>
 
         {/* Right: Details */}
-        <div className="details flex-grow-1 d-flex flex-column justify-content-center">
+        <div className="details d-flex flex-column justify-content-center">
           <ul className="description-list list-unstyled mb-0 small">
             {descriptionList.map((item, index) => (
               <li key={index} className="mb-1">

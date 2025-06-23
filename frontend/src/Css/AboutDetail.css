@@ -1,39 +1,30 @@
 .about-detail-bg {
-  background-color: #E6F4EA; /* Soft Green BG for main background */
+  background-color: #E6F4EA; /* Soft Green Background */
+  
 }
 
 .about-content-box {
-  background-color: #ffffff; /* White for clear content visibility */
-  border-radius: 16px;
-  box-shadow: 0 6px 20px rgba(0, 43, 91, 0.1); /* Subtle shadow with navy tone */
-  font-size: 1rem;
-  line-height: 1.6;
-  border: 1px solid #F5F5F5; /* Light Gray border for subtle edge */
+  background-color: #ffffff; /* White for contrast */
+  border: 1px solid #F5F5F5; /* Light Gray Border */
 }
 
 .about-title {
+  color: #002B5B; /* Navy Blue Header */
   font-weight: 700;
-  color: #002B5B; /* Navy Blue for titles */
 }
 
 .about-text {
-  color: #001F3F; /* Deep Navy for readable body text */
+  color: #001F3F; /* Deep Navy Text */
   font-size: 1.05rem;
+  white-space: pre-line;
+  line-height: 1.7;
 }
 
-/* Optional: Add Accent Styling for CTAs inside content */
-
-.about-cta {
-  color: #ffffff;
-  background-color: #FFA500; /* Light Orange accent */
-  padding: 0.6rem 1.2rem;
-  border: none;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+.about-text strong {
+  color: #28A745; /* Primary Green for emphasized text */
 }
 
-.about-cta:hover {
-  background-color: #e69500;
+.about-text a {
+  color: #FFA500; /* Accent Orange for links or CTAs */
+  text-decoration: underline;
 }

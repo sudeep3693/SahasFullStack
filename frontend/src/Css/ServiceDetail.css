@@ -31,7 +31,7 @@
 
 .service-image {
   border-radius: 0.5rem;
-  width: 100%;
+  width: 40%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
   transition: transform 0.3s ease;
@@ -43,7 +43,7 @@
 
 .service-title {
   font-weight: 700;
-  font-size: 1.25rem;
+  font-size: 0.9rem;
   color: #FFFFFF; /* White text on dark background */
   margin: 0;
 }

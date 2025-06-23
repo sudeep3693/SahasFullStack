@@ -19,7 +19,7 @@ function PaymentPartner() {
 
       <div className="partner-container">
         <Container>
-          <Row className="mb-4 text-black text-center">
+          <Row className="mb-4 text-center" style={{color:'#001F3F'}}>
             <h3 className=" fs-1 fw-bold">Our Payment Partners</h3>
             <p className="text-muted">Trusted gateways to make your experience smoother and secure</p>
           </Row>
