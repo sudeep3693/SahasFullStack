@@ -1,6 +1,6 @@
 const config = {
 
-    baseUrl :"http://192.168.1.68:3001",
+    baseUrl :"http://192.168.1.66:3001",
     
 
 };

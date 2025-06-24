@@ -7,6 +7,7 @@ import NoticeRoute from './Routes/NoticeRoute.js';
 import GalleryRoute from './Routes/GalleryRoute.js';
 import TeamDetailRoute from './Routes/TeamDetailsRoute.js';
 import BasicDetails from './Routes/BasicDetails.js';
+import NewsRoute from './Routes/NewsRoute.js';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -21,6 +22,7 @@ app.use('/uploads/carousel', express.static('uploads/carousel'));
 app.use('/uploads/gallery', express.static('uploads/gallery'));
 app.use('/uploads/notice', express.static('uploads/notice'));
 app.use('/uploads/team', express.static('uploads/teamDetails'));
+app.use('./uploads/news', express.static('uploads/news'));
 
 // API Routes
 app.use('/admin', LoginRoute);
@@ -30,6 +32,7 @@ app.use('/notice', NoticeRoute);
 app.use('/gallery', GalleryRoute);
 app.use('/api', BasicDetails);
 app.use('/teamDetail', TeamDetailRoute);
+app.use('/news', NewsRoute)
 
 // Start server
 app.listen(PORT, () => {

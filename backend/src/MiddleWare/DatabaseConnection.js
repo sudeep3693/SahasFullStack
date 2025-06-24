@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 const DBConnect = (req, res, next) =>{
 
-    mongoose.connect(process.env.MONGO_URI, {
+    mongoose.connect('mongodb://localhost:27017/Sahas', {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     })
@@ -11,5 +11,5 @@ const DBConnect = (req, res, next) =>{
     next();
 }
 // 'mongodb://localhost:27017/Sahas'
-
+//process.env.MONGO_URI
 export default DBConnect;

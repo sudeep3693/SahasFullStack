@@ -58,6 +58,15 @@ function Body() {
                         />
                     </Col>
 
+
+                    <Col sm={12} md={6} lg={4}>
+                        <BodyComponent
+                            title="News"
+                            description="News"
+                            onClick={()=>handleCardClick("uploadNews")}
+                        />
+                    </Col>
+
                 </Row>
             </Container>
         </div>

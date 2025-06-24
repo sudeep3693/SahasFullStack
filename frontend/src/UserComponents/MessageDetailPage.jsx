@@ -2,6 +2,8 @@ import { Container, Row, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import messages from "../Data/MessageFromTeam"
 import MessageBox from "../Component/MessageBox";
+import bgLogo from '../Images/logoOnly.png';
+
 import '../Css/MessageDetailPage.css'
 
 function MessageDetailPage() {

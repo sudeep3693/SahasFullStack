@@ -1,24 +1,60 @@
 .details-bg {
-  /* Background using Soft Green BG fading to Light Gray for subtlety */
   background: linear-gradient(
     to right,
-    #E6F4EA 0%,    /* Soft Green BG */
-    #F5F5F5 50%,   /* Light Gray */
+    #E6F4EA 0%,
+    #F5F5F5 50%,
     #E6F4EA 100%
   );
   min-height: 100vh;
-  color: #001F3F; /* Deep Navy text for readability */
+  color: #001F3F;
   padding: 2rem;
 }
 
 .hover-title {
   cursor: pointer;
   transition: transform 0.3s ease, color 0.3s ease;
-  color: #002B5B; /* Navy Blue for headers */
+  color: #002B5B;
   font-weight: 600;
 }
 
 .hover-title:hover {
   transform: scale(1.05);
-  color: #FFA500; /* Accent Light Orange on hover for call-to-action emphasis */
+  color: #FFA500;
+}
+
+/* Watermark in product unit */
+.product-unit {
+  position: relative;
+  background-color: #ffffff;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.watermark-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150px;
+  height: 150px;
+  max-width: 350px;
+  max-height: 350px;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.20;
+}
+
+.watermark-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Ensure text stays above watermark */
+.product-unit h5,
+.product-unit p {
+  position: relative;
+  z-index: 1;
 }

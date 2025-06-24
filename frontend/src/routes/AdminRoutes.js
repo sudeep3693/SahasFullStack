@@ -7,6 +7,7 @@ import Body from '../AdminComponents/Body';
 import ContactDetails from '../AdminComponents/pages/ContactDetails';
 import InstitutionalDetail from '../AdminComponents/pages/InstitutionalDetail';
 import HandleImages from '../AdminComponents/pages/HandleImages';
+import UploadNews from '../AdminComponents/UploadNews';
 import config from '../Constants/config';
 import TeamDetail from '../AdminComponents/TeamDetail';
 const NotFound = () => (
@@ -27,6 +28,7 @@ const AdminRoutes = (isAuthenticated) => [
       <Route index element={<Body />} />
       <Route path="contactDetails" element={<ContactDetails />} />
       <Route path="teamDetails" element={<TeamDetail />} />
+      <Route path="uploadNews" element={<UploadNews/>} />
       <Route path="notice" element = {<HandleImages getLink={`${config.baseUrl}/uploads/notice`} postLink={`${config.baseUrl}/notice`} selectionHeader = {"Upload Notices"} displayHeader = {"Display Notices"} usedIn={'notice'}/>} />
       <Route path = "institutionalDetails" element = {<InstitutionalDetail/>}/>
       <Route path = "carouselImage" element = {<HandleImages getLink={`${config.baseUrl}/uploads/carousel`} postLink={`${config.baseUrl}/images/carousel`} selectionHeader = {"Upload Carousel Images"} displayHeader = {"Display Carousel Images"} usedIn={'carousel'}/>}/>
