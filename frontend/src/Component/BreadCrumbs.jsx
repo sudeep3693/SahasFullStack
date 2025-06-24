@@ -13,11 +13,12 @@ const Breadcrumbs = () => {
     'our-team': 'Our Team',
     branches: 'Branches',
     contact: 'Contact Us',
+    'news-details':'News Detail'
   };
 
   // Check if last segment is a numeric ID
   const isDetailPage =
-    pathnames.length >= 2 && /^\d+$/.test(pathnames[pathnames.length - 1]);
+    pathnames.length >= 2 && /^[a-zA-Z0-9]+$/.test(pathnames[pathnames.length - 1]);
 
   // Build breadcrumb items
   const breadcrumbItems = [];

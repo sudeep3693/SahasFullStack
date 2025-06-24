@@ -1,6 +1,8 @@
 import { Col, Container, Row, Card } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import Services from '../Data/ServiceData';
+import '../Css/Service.css';
+import bgLogo from '../Images/logoOnly.png';
 
 function ServiceDetailsPage() {
     const { id } = useParams();
@@ -40,6 +42,13 @@ function ServiceDetailsPage() {
                     <Col xs={12} md={7}>
                         <Card className="bg-light shadow border-0 h-100">
                             <Card.Body>
+                                <div className="watermark-overlay">
+                                    <img
+                                        src={bgLogo}
+                                        alt="Watermark"
+                                        className="watermark-img"
+                                    />
+                                </div>
                                 <Card.Text className="fs-5 text-muted">{service.description}</Card.Text>
                             </Card.Body>
 

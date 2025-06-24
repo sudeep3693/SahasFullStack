@@ -5,6 +5,7 @@ import axios from 'axios';
 import config from '../Constants/config';
 import { useNavigate } from "react-router-dom";
 import "../Css/UploadNews.css";
+import NewsGallery from "./NewsGallery";
 
 function UploadNews() {
   const navigate = useNavigate();
@@ -59,7 +60,8 @@ function UploadNews() {
   };
 
   return (
-    <Container className="upload-news-container py-5">
+    <div>
+<Container className="upload-news-container py-5">
       <Row className="justify-content-center">
         <Col md={10} lg={8}>
           <Card className="p-4 shadow-lg upload-news-card">
@@ -122,6 +124,12 @@ function UploadNews() {
         </Col>
       </Row>
     </Container>
+
+    <Container>
+      <NewsGallery/>
+    </Container>
+    </div>
+    
   );
 }
 

@@ -12,6 +12,7 @@ import AllNews from '../Component/AllNews';
 import OurGallery from '../Component/OurGallery';
 import SecondaryNavbar from '../Component/SecondaryNavBar';
 import TeamDetailContainer from '../Component/TeamDetailContainer';
+import NewsDetailPage from '../Component/NewsDetailPage';
 
 function UserRoutes() {
   const productsRef = useRef(null);
@@ -33,6 +34,7 @@ function UserRoutes() {
         <Route path="/" element={<User onProductsClick={scrollToProducts} onContactClick={scrollToContact} />}>
           <Route index element={<Body productsRef={productsRef} contactRef = {contactRef} />} />
           <Route path="details/:id" element={<DetailsPage />} />
+          <Route path="news-details/:id" element={<NewsDetailPage />} />
           <Route path="serviceDetails/:id" element={<ServiceDetailsPage />} />
           <Route path="messageDetails/:id" element={<MessageDetailPage />} />
           <Route path="aboutDetail" element={<AboutDetail />} />

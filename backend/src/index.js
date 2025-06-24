@@ -22,7 +22,7 @@ app.use('/uploads/carousel', express.static('uploads/carousel'));
 app.use('/uploads/gallery', express.static('uploads/gallery'));
 app.use('/uploads/notice', express.static('uploads/notice'));
 app.use('/uploads/team', express.static('uploads/teamDetails'));
-app.use('./uploads/news', express.static('uploads/news'));
+app.use('/uploads/news', express.static('uploads/news'));
 
 // API Routes
 app.use('/admin', LoginRoute);

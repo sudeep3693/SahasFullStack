@@ -1,29 +1,37 @@
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import News from './News';
+import config from '../Constants/config';
+import axios from 'axios';
 import { useState, useEffect } from 'react';
 
-const totalNews = 5; // Replace with dynamic count as needed
-
 function NewsNotice() {
+  const [newsList, setNewsList] = useState([]);
   const navigate = useNavigate();
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 
-  // Detect screen size to conditionally render number of news items
+  const fetchNews = async () => {
+    try {
+      const res = await axios.get(`${config.baseUrl}/news/all`);
+      setNewsList(res.data);
+    } catch (error) {
+      console.error("Failed to fetch news:", error);
+    }
+  };
+
   useEffect(() => {
+    fetchNews();
+
     const handleResize = () => {
-      setIsSmallScreen(window.innerWidth < 768); // 'md' in Bootstrap is 768px
+      setIsSmallScreen(window.innerWidth < 768);
     };
 
-    handleResize(); // Initialize on mount
-    window.addEventListener('resize', handleResize); // Update on resize
-
+    handleResize(); // On mount
+    window.addEventListener('resize', handleResize); // On resize
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const visibleNews = isSmallScreen
-    ? Math.min(totalNews, 2)
-    : Math.min(totalNews, 4);
+  const visibleNews = isSmallScreen ? 2 : 4;
 
   const handleShowMore = () => {
     navigate('/all-news');
@@ -31,54 +39,39 @@ function NewsNotice() {
 
   return (
     <div className="position-relative" style={{ backgroundColor: '#E6F4EA' }}>
-      {/* Header */}
-      <div
-        className="d-flex flex-column align-items-center pt-4 text-center"
-        style={{
-          backgroundColor: 'transparent',
-          height: '200px',
-          color: '#001F3F',
-          zIndex: 1,
-        }}
-      >
-        <div className="fs-2 fw-bold" style={{ color: '#002B5B' }}>
-          News/Notice
-        </div>
-        <div style={{ color: '#001F3F' }} className='mb-2'>
-          Get Latest Updates and Achievements of our Organization
-        </div>
+      <div className="d-flex flex-column align-items-center pt-4 text-center" style={{ height: '200px' }}>
+        <div className="fs-2 fw-bold" style={{color:'#001F3F'}}>News/Notice</div>
+        <div className="mb-2 text-secondary">Get Latest Updates and Achievements of our Organization</div>
       </div>
 
-      {/* Cards Section */}
       <div
         style={{
           marginTop: '-100px',
-          zIndex: 2,
           position: 'relative',
           backgroundColor: '#F5F5F5',
           paddingTop: '20px',
-          borderTop: '1px solid #F5F5F5',
         }}
       >
         <Container>
           <Row className="g-4 justify-content-center mb-4">
-            {[...Array(visibleNews)].map((_, i) => (
-              <Col key={i} xs={12} sm={6} md={4} lg={3} className="text-center">
-                <News />
+            {newsList.slice(0, visibleNews).map((item, i) => (
+              <Col key={item.id} xs={12} sm={6} md={4} lg={3} className="text-center">
+                <News
+                  imageName={item.imageName}
+                  heading={item.heading}
+                  date={item.date}
+                  description={item.description}
+                  id={item.id}
+                />
               </Col>
             ))}
           </Row>
 
-          {/* Show More Button if more news exist */}
-          {totalNews > visibleNews && (
+          {newsList.length > visibleNews && (
             <div className="text-center mb-4">
               <Button
                 variant="success"
-                style={{
-                  backgroundColor: '#006400',
-                  borderColor: '#28A745',
-                  marginBottom: '10px'
-                }}
+                style={{ backgroundColor: '#006400', borderColor: '#28A745' }}
                 onClick={handleShowMore}
               >
                 Show More News

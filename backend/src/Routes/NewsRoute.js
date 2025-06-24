@@ -16,8 +16,8 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 /**
- * @desc Save new team detail with image
- * @route POST /teamDetail/save/:type
+ * @desc Save new news detail with image
+ * @route POST /news/save
  */
 router.post('/save', upload.single('image'), async (req, res) => {
   try {
@@ -31,40 +31,56 @@ router.post('/save', upload.single('image'), async (req, res) => {
     });
 
     await newsModel.save();
-    res.status(201).json({ message: 'Successfully saved news data', newsModel });
+
+    res.status(201).json({
+      message: 'Successfully saved news data',
+      data: {
+        id: newsModel._id,
+        heading: newsModel.heading,
+        date: newsModel.date,
+        description: newsModel.newsDescription,
+        imageName: newsModel.imageName
+      }
+    });
   } catch (error) {
-    console.error('Error saving team detail:', error);
+    console.error('Error saving news detail:', error);
     res.status(500).json({ message: 'Server error while saving news detail', error });
   }
 });
 
 /**
- * @desc Get all team details
- * @route GET /teamDetail/all
+ * @desc Get all news details
+ * @route GET /news/all
  */
 router.get('/all', async (req, res) => {
   try {
-    const newsModel = await NewsModel.find();
-    res.status(200).json(newsModel);
+    const allNews = await NewsModel.find();
+
+    const formattedNews = allNews.map(news => ({
+      id: news._id,
+      heading: news.heading,
+      date: news.date,
+      description: news.newsDescription,
+      imageName: news.imageName
+    }));
+
+    res.status(200).json(formattedNews);
   } catch (error) {
     res.status(500).json({ message: 'Failed to fetch news details', error });
   }
 });
 
-
-
 /**
- * @desc Delete team detail by ID and remove image
- * @route DELETE /teamDetail/delete/:id
+ * @desc Delete news detail by ID and remove image
+ * @route DELETE /news/delete/:id
  */
 router.delete('/delete/:id', async (req, res) => {
   try {
-    const { imageName } = req.body;
-    const filePath = path.join(path.resolve(), 'uploads/news', imageName);
+    const news = await NewsModel.findByIdAndDelete(req.params.id);
 
-    await NewsModel.findByIdAndDelete(req.params.id);
+    if (!news) return res.status(404).json({ message: 'News not found' });
 
-    // Attempt to delete image file
+    const filePath = path.join(path.resolve(), 'uploads/news', news.imageName);
     if (fs.existsSync(filePath)) {
       fs.unlinkSync(filePath);
     }
