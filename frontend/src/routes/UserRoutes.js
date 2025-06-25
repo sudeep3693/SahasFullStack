@@ -39,9 +39,10 @@ function UserRoutes() {
           <Route path="messageDetails/:id" element={<MessageDetailPage />} />
           <Route path="aboutDetail" element={<AboutDetail />} />
           <Route path = "all-news" element={<AllNews/>}/>
-          <Route path = "downloads" element = {<Downloads/>}/>
-          <Route path = "/gallery" element={<OurGallery/>}/>
-          <Route path = "/team" element={<TeamDetailContainer/>}/> 
+          <Route path = "downloads" element = {<Downloads type="downloads"/>}/>
+          <Route path = "reports" element = {<Downloads type="reports"/>}/>
+          <Route path = "gallery" element={<OurGallery/>}/>
+          <Route path = "team" element={<TeamDetailContainer/>}/> 
         </Route>
       </Routes>
     </>

@@ -8,6 +8,8 @@ import GalleryRoute from './Routes/GalleryRoute.js';
 import TeamDetailRoute from './Routes/TeamDetailsRoute.js';
 import BasicDetails from './Routes/BasicDetails.js';
 import NewsRoute from './Routes/NewsRoute.js';
+import DocumentRoute from './Routes/DocumentRoute.js';
+import MessageRoute from './Routes/MessageRoute.js';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -23,6 +25,9 @@ app.use('/uploads/gallery', express.static('uploads/gallery'));
 app.use('/uploads/notice', express.static('uploads/notice'));
 app.use('/uploads/team', express.static('uploads/teamDetails'));
 app.use('/uploads/news', express.static('uploads/news'));
+app.use('/uploads/documents', express.static('uploads/documents'));
+app.use('/uploads/messages', express.static('uploads/messages'));
+
 
 // API Routes
 app.use('/admin', LoginRoute);
@@ -33,6 +38,8 @@ app.use('/gallery', GalleryRoute);
 app.use('/api', BasicDetails);
 app.use('/teamDetail', TeamDetailRoute);
 app.use('/news', NewsRoute)
+app.use('/documents', DocumentRoute)
+app.use('/messages', MessageRoute);
 
 // Start server
 app.listen(PORT, () => {

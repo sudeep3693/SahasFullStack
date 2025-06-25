@@ -68,7 +68,7 @@ const SecondaryNavBar = ({ onProductsClick, onContactClick }) => {
              Contact Us
             </Link>
             <Link to="/downloads">Downloads</Link>
-            <Link to="/">Reports</Link>
+            <Link to="/reports">Reports</Link>
              <Link to="/gallery">Gallery</Link>
           </nav>
         </div>

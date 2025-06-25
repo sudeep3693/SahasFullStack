@@ -2,8 +2,6 @@ import { Container, Row, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import messages from "../Data/MessageFromTeam"
 import MessageBox from "../Component/MessageBox";
-import bgLogo from '../Images/logoOnly.png';
-
 import '../Css/MessageDetailPage.css'
 
 function MessageDetailPage() {
@@ -32,7 +30,7 @@ function MessageDetailPage() {
 
           <Col sm={12} md={8}>
             <div className="message-oath-box p-4">
-              <h4 className="mb-3">Team Message</h4>
+              <h4 className="mb-3">Message</h4>
               <p className="text-muted" style={{ whiteSpace: 'pre-line' }}>
                 {message.oath}
               </p>

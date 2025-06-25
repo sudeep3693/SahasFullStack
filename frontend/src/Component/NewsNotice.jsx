@@ -39,9 +39,9 @@ function NewsNotice() {
 
   return (
     <div className="position-relative" style={{ backgroundColor: '#E6F4EA' }}>
-      <div className="d-flex flex-column align-items-center pt-4 text-center" style={{ height: '200px' }}>
+      <div className="d-flex flex-column align-items-center pt-4 text-center" style={{ height: '220px' }}>
         <div className="fs-2 fw-bold" style={{color:'#001F3F'}}>News/Notice</div>
-        <div className="mb-2 text-secondary">Get Latest Updates and Achievements of our Organization</div>
+        <div className="mb-1 text-secondary">Get Latest Updates and Achievements of our Organization</div>
       </div>
 
       <div
@@ -71,7 +71,7 @@ function NewsNotice() {
             <div className="text-center mb-4">
               <Button
                 variant="success"
-                style={{ backgroundColor: '#006400', borderColor: '#28A745' }}
+                style={{ backgroundColor: '#006400', borderColor: '#28A745', marginBottom:'10px' }}
                 onClick={handleShowMore}
               >
                 Show More News

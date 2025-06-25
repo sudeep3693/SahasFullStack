@@ -60,6 +60,14 @@ function NavBar({ onProductsClick, onContactClick }) {
       navigate(`/gallery`);
 
   }
+
+   const handleReportClick = (e) =>{
+
+    e.preventDefault();
+    handleClose();
+      navigate(`/reports`);
+
+  }
   const messageFromGM = ()=>{
 
     navigate(`messageDetails/2`);
@@ -153,7 +161,7 @@ function NavBar({ onProductsClick, onContactClick }) {
 
                 <Nav.Link
                   as="button"
-                  //onClick={handleGalleryClick}
+                  onClick={handleReportClick}
                   className="custom-nav-link fs-6 custom-button-link"
                 >
                 Reports

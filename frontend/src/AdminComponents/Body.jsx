@@ -61,9 +61,27 @@ function Body() {
 
                     <Col sm={12} md={6} lg={4}>
                         <BodyComponent
+                            title="Message"
+                            description="Message"
+                            onClick={()=>handleCardClick("uploadMessage")}
+                        />
+                    </Col>
+
+
+                    <Col sm={12} md={6} lg={4}>
+                        <BodyComponent
                             title="News"
                             description="News"
                             onClick={()=>handleCardClick("uploadNews")}
+                        />
+                    </Col>
+
+
+                    <Col sm={12} md={6} lg={4}>
+                        <BodyComponent
+                            title="Documents"
+                            description="Documents"
+                            onClick={()=>handleCardClick("uploadDocument")}
                         />
                     </Col>
 

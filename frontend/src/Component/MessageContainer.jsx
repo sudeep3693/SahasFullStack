@@ -1,8 +1,26 @@
 import { Container, Row, Col } from "react-bootstrap";
 import MessageBox from "./MessageBox";
-import messages from '../Data/MessageFromTeam';
-
+import { useState, useEffect } from "react";
+import config from "../Constants/config";
+import axios from 'axios';
 function MessageContainer() {
+
+   const [messages, setMessages] = useState([]);
+    const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        fetchMessages();
+    }, []);
+
+    const fetchMessages = async () => {
+        try {
+            const res = await axios.get(`${config.baseUrl}/messages/all`);
+            setMessages(res.data);
+        } catch (error) {
+            console.error('Error fetching messages:', error);
+        }
+    };
+
   return (
  <Container
   fluid

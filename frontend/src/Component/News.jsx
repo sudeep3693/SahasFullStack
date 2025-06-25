@@ -8,6 +8,11 @@ function News({ imageName, heading, date, description, id }) {
     navigate(`/news-details/${id}`);
   };
 
+  // Truncate heading if it exceeds 25 characters
+  const truncatedHeading = heading.length > 25
+    ? `${heading.slice(0, 50)}...`
+    : heading;
+
   return (
     <div
       className="rounded shadow-sm d-flex flex-column align-items-center"
@@ -34,7 +39,7 @@ function News({ imageName, heading, date, description, id }) {
           {date}
         </h5>
         <p className="mb-3" style={{ fontSize: '0.9rem', color: '#006400' }}>
-          {heading}
+          {truncatedHeading}
         </p>
         <div className="text-center mt-2">
           <button
