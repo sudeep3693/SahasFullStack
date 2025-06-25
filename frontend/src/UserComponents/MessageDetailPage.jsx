@@ -1,13 +1,37 @@
 import { Container, Row, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import messages from "../Data/MessageFromTeam"
+import { useEffect, useState } from "react";
 import MessageBox from "../Component/MessageBox";
-import '../Css/MessageDetailPage.css'
+import config from "../Constants/config";
+import axios from "axios";
+import "../Css/MessageDetailPage.css";
 
 function MessageDetailPage() {
- const { id } = useParams();
+  const { id } = useParams();
+  const [message, setMessage] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  const message = messages.find((s) => s.id.toString() === id);
+  useEffect(() => {
+    fetchMessage();
+  }, []);
+
+  const fetchMessage = async () => {
+    try {
+      const res = await axios.get(`${config.baseUrl}/messages/all`);
+      const found = res.data.find((msg) => msg._id === id);
+      if (found) {
+        setMessage(found);
+      }
+    } catch (error) {
+      console.error("Failed to fetch message:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) {
+    return <p className="text-center mt-5">Loading message...</p>;
+  }
 
   if (!message) {
     return <p className="text-center mt-5">Message not found.</p>;
@@ -18,21 +42,22 @@ function MessageDetailPage() {
       <Container>
         <Row>
           <Col sm={12} md={4}>
-            <div>
-              <MessageBox
-                position={message.position}
-                image={message.image}
-                descriptionList={message.descriptionList}
-                
-              />
-            </div>
+            <MessageBox
+              position={message.position}
+              image={`${config.baseUrl}/uploads/messages/${message.imageName}`}
+              descriptionList={[
+                `Name: ${message.name}`,
+                `Email: ${message.email}`,
+                `Contact: ${message.contact}`,
+              ]}
+            />
           </Col>
 
           <Col sm={12} md={8}>
             <div className="message-oath-box p-4">
               <h4 className="mb-3">Message</h4>
-              <p className="text-muted" style={{ whiteSpace: 'pre-line' }}>
-                {message.oath}
+              <p className="text-muted" style={{ whiteSpace: "pre-line" }}>
+                {message.message}
               </p>
             </div>
           </Col>

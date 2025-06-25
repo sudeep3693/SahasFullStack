@@ -12,6 +12,12 @@ const Footer = () => {
      navigate(`/downloads`);
   }
 
+   const handleReport = ()=>{
+     navigate(`/reports`);
+  }
+
+
+
   const handleHome = ()=>{
     navigate(`/`);
   }
@@ -41,7 +47,7 @@ const Footer = () => {
             <ul className="footer-list">
               <li onClick={handleHome}>Home</li>
               <li onClick={handlDownload}>Downloads</li>
-              <li>Our Departments</li>
+              <li onClick={handleReport}>Reports</li>
               <li onClick={handleGallery}>Our Gallery</li>
               <li>
                 <a href="/login" className="text-decoration-none text-white">Admin</a>

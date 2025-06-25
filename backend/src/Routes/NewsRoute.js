@@ -3,10 +3,8 @@ import multer from 'multer';
 import fs from 'fs';
 import path from 'path';
 import NewsModel from '../Model/NewsModel.js';
-import DBConnect from '../MiddleWare/DatabaseConnection.js';
 
 const router = Router();
-router.use(DBConnect);
 
 // Multer setup
 const storage = multer.diskStorage({

@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom';
+import { useState, useRef } from 'react';
 import Products from '../Data/ProductData';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import '../Css/ProductDetailPage.css';
@@ -8,9 +9,23 @@ function DetailsPage() {
   const { id } = useParams();
   const product = Products.find((s) => s.productId === id);
 
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  // Create an array of refs, one for each topic
+  const topicRefs = useRef([]);
+
   if (!product) {
     return <div className="text-center mt-5">Product not found</div>;
   }
+
+  const handleTopicClick = (index) => {
+    setSelectedIndex(index);
+
+    // Scroll to the topic description element smoothly
+    if (topicRefs.current[index]) {
+      topicRefs.current[index].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
 
   return (
     <Container fluid className="py-4 px-3 details-bg text-light">
@@ -20,44 +35,56 @@ function DetailsPage() {
           <div className="p-3 rounded shadow-sm bg-dark-subtle">
             <h4 className="text-info mb-3">Topics</h4>
             {product.Topics.map((item, i) => (
-              <div key={i} className="hover-title mb-3 border-bottom pb-2">
+              <div
+                key={i}
+                className={`hover-title mb-3 border-bottom pb-2 ${
+                  selectedIndex === i ? 'selected-topic' : ''
+                }`}
+                style={{ cursor: 'pointer' }}
+                onClick={() => handleTopicClick(i)}
+              >
                 <h6 className="m-0">{item.innerTitle}</h6>
               </div>
             ))}
           </div>
         </Col>
 
-        {/* Right Column - Details with Watermark */}
-        <Col xs={12} md={8}>
-          <Card className="bg-light text-dark p-4 shadow position-relative">
+        {/* Right Column - All Topics with refs */}
+        <Col xs={12} md={8} style={{ maxHeight: '80vh', overflowY: 'auto' }}>
+          <Card className="bg-light text-dark shadow position-relative">
             <Card.Body>
-              <h2 className="text-primary mb-3">{product.productSubTitle}</h2>
+              <h2 className="mb-3" style={{color:'#001F3F'}}>{product.productSubTitle}</h2>
               <p className="mb-4" style={{ textAlign: 'justify' }}>
                 {product.productDescription}
               </p>
 
               {product.Topics.map((item, i) => (
-                <div key={i} className="mb-4 product-unit position-relative">
+                <div
+                  key={i}
+                  ref={el => (topicRefs.current[i] = el)}
+                  className="mb-4 product-unit position-relative"
+                  style={{
+                    border: selectedIndex === i ? '2px solid #28A745' : 'none',
+                    borderRadius: '8px',
+                    padding: '1rem',
+                    scrollMarginTop: '80px' // For offset if you have sticky headers
+                  }}
+                >
                   {/* Watermark */}
                   <div className="watermark-overlay">
-                    <img
-                      src={bgLogo}
-                      alt="Watermark"
-                      className="watermark-img"
-                    />
+                    <img src={bgLogo} alt="Watermark" className="watermark-img" />
                   </div>
 
                   {/* Mobile */}
-                  <div className="d-flex d-md-none flex-column align-items-center mb-3" style={{ textAlign: 'justify' }}>
+                  <div
+                    className="d-flex d-md-none flex-column align-items-center mb-3"
+                    style={{ textAlign: 'justify' }}
+                  >
                     <img
                       src={item.productInnerImage}
                       alt="Product"
                       className="rounded"
-                      style={{
-                        width: '60px',
-                        height: '60px',
-                        objectFit: 'cover',
-                      }}
+                      style={{ width: '60px', height: '60px', objectFit: 'cover' }}
                     />
                     <h5 className="text-dark mt-2">{item.innerTitle}</h5>
                     <p>{item.innerDescription}</p>
@@ -69,11 +96,7 @@ function DetailsPage() {
                       src={item.productInnerImage}
                       alt="Product"
                       className="rounded"
-                      style={{
-                        width: '60px',
-                        height: '60px',
-                        objectFit: 'cover',
-                      }}
+                      style={{ width: '60px', height: '60px', objectFit: 'cover' }}
                     />
                     <div>
                       <h5 className="text-dark">{item.innerTitle}</h5>

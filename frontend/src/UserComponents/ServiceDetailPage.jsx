@@ -52,18 +52,34 @@ function ServiceDetailsPage() {
                                 <Card.Text className="fs-5 text-muted">{service.description}</Card.Text>
                             </Card.Body>
 
-                            {service.link1 && (
-                                <div className="p-3">
+                            {service.link1 && service.link2 && (
+                                <div className="p-3 d-flex gap-3 flex-wrap">
                                     <a
                                         href={service.link1}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="btn btn-success"
                                     >
-                                        Download from Play Store
+                                        <img
+                                            src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                                            alt="Get it on Google Play"
+                                            style={{ height: '50px' }}
+                                        />
+                                    </a>
+
+                                    <a
+                                        href={service.link2}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        <img
+                                            src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+                                            alt="Download on the App Store"
+                                            style={{ height: '50px' }}
+                                        />
                                     </a>
                                 </div>
                             )}
+
                         </Card>
                     </Col>
                 </Row>

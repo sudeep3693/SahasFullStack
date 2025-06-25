@@ -3,10 +3,8 @@ import multer from 'multer';
 import fs from 'fs';
 import path from 'path';
 import Document from '../Model/DocumentModel.js';
-import DBConnect from '../MiddleWare/DatabaseConnection.js';
 
 const router = Router();
-router.use(DBConnect);
 
 // Storage config for PDFs
 const storage = multer.diskStorage({

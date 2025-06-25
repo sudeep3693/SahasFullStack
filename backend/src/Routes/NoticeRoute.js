@@ -6,7 +6,6 @@ import path from 'path';
 
 const router = Router();
 
-
 const storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, 'uploads/notice'),
   filename: (req, file, cb) => {

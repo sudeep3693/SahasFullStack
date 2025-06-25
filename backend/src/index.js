@@ -20,6 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(CorsMiddleware);
 
 // Static file routes
+
 app.use('/uploads/carousel', express.static('uploads/carousel'));
 app.use('/uploads/gallery', express.static('uploads/gallery'));
 app.use('/uploads/notice', express.static('uploads/notice'));

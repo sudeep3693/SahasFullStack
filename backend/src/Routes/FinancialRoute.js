@@ -1,11 +1,9 @@
 // routes/auth.js
 import { Router } from 'express';
 import InstitutionalDetail from '../Model/InstitutionalProfile.js';
-import DBConnect from '../MiddleWare/DatabaseConnection.js';
 
 const router = Router();
 
-router.use(DBConnect);
 router.post('/add', async (request, response) => {
   try {
     console.log("Received data for institutional profile");

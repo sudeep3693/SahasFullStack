@@ -14,16 +14,12 @@ function MessageBox({ position, descriptionList, image, id }) {
     <div
       className="message-box shadow-sm rounded-4 mb-4 mx-auto"
       onClick={handleReadMore}
-      onMouseEnter={(e) => {
-        e.currentTarget.classList.add("hovered");
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.classList.remove("hovered");
-      }}
+      onMouseEnter={(e) => e.currentTarget.classList.add("hovered")}
+      onMouseLeave={(e) => e.currentTarget.classList.remove("hovered")}
     >
       {/* Full-width Heading */}
       <div className="position-label">
-        <h6>{position}</h6>
+        <h6>{position.replace('_', ' ')}</h6>
       </div>
 
       {/* Main Content */}

@@ -1,10 +1,8 @@
 // routes/auth.js
 import { Router } from 'express';
 import Credintal from '../Model/Credintals.js';
-import DBConnect from '../MiddleWare/DatabaseConnection.js';
 
 const router = Router();
-router.use(DBConnect);
 
 router.post('/login', async (request, response) => {
   const { username, password } = request.body;

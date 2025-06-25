@@ -3,11 +3,8 @@ import multer from 'multer';
 import fs from 'fs';
 import path from 'path';
 import TeamDetail from '../Model/TeamDetailModel.js';
-import DBConnect from '../MiddleWare/DatabaseConnection.js';
 
 const router = Router();
-router.use(DBConnect);
-
 // Multer setup
 const storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, 'uploads/teamDetails'),

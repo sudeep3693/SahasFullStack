@@ -125,7 +125,7 @@ function MessageManager() {
                 />
                 <input
                     type="file"
-                    name="image"  // ✅ this is important
+                    name="image"  // important
                     accept="image/*"
                     onChange={handleFileChange}
                     required

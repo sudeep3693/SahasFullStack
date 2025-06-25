@@ -3,10 +3,8 @@ import multer from 'multer';
 import path from 'path';
 import fs from 'fs';
 import Message from '../Model/MessageModel.js';
-import DBConnect from '../MiddleWare/DatabaseConnection.js';
 
 const router = Router();
-router.use(DBConnect);
 
 // Multer config
 const storage = multer.diskStorage({
