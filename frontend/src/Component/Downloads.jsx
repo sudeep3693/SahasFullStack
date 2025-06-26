@@ -15,7 +15,7 @@ function Downloads({ type }) {
 
    useEffect(() => {
       AOS.init({
-        duration: 800,  // animation duration in ms
+        duration: 500,  // animation duration in ms
       });
     }, []);
   

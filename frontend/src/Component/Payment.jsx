@@ -8,7 +8,7 @@ function Partner({ partner }) {
 
    useEffect(() => {
       AOS.init({
-        duration: 2000,  // animation duration in ms
+        duration: 500,  // animation duration in ms
       });
     }, []);
   

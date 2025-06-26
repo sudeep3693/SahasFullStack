@@ -12,7 +12,7 @@ function NewsDetailPage() {
   const [news, setNews] = useState(null);
   useEffect(() => {
     AOS.init({
-      duration: 800,  // animation duration in ms
+      duration: 1000,  // animation duration in ms
     });
   }, []);
 

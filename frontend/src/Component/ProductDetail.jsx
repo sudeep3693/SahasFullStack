@@ -1,6 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import '../Css/Details.css';
+import { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // This is required
 
 function Details({ title, subtitle, headerImage, description, id, others }) {
   const navigate = useNavigate();
@@ -14,12 +17,21 @@ function Details({ title, subtitle, headerImage, description, id, others }) {
     navigate(`/details/${id}`);
   };
 
+   useEffect(() => {
+    AOS.init({
+      duration: 500,  // animation duration in ms
+    });
+  }, []);
+
+
+
   return (
     <div
       className="details-card"
       onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.03)")}
       onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
-      style={{ cursor: "pointer" }}
+      style={{ cursor: "pointer", overflowX:"hidden" }}
+      data-aos = 'fade-right'
     >
       <img
         src={headerImage}

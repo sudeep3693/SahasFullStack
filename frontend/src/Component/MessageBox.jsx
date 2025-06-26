@@ -8,7 +8,7 @@ function MessageBox({ position, descriptionList, image, id }) {
   const navigate = useNavigate();
   useEffect(() => {
     AOS.init({
-      duration: 2000,  // animation duration in ms
+      duration: 800,  // animation duration in ms
     });
   }, []);
 
@@ -24,7 +24,8 @@ function MessageBox({ position, descriptionList, image, id }) {
       onClick={handleReadMore}
       onMouseEnter={(e) => e.currentTarget.classList.add("hovered")}
       onMouseLeave={(e) => e.currentTarget.classList.remove("hovered")}
-      data-aos = 'fade-up'
+      style={{overflowX:'hidden'}}
+      data-aos = 'fade-right'
     >
       {/* Full-width Heading */}
       <div className="position-label">

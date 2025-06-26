@@ -15,7 +15,7 @@ function MessageContainer() {
 
    useEffect(() => {
       AOS.init({
-        duration: 800,  // animation duration in ms
+        duration: 400,  // animation duration in ms
       });
     }, []);
   
@@ -36,6 +36,7 @@ function MessageContainer() {
       style={{
         backgroundColor: "#F5F5F5",
         border: "1px solid #ddd",
+        overflowX:'hidden'
       }}
     >
       <Row className="mb-3 px-2">

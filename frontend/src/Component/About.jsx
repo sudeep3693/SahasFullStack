@@ -9,7 +9,7 @@ function About() {
   
    useEffect(() => {
       AOS.init({
-        duration: 800,  // animation duration in ms
+        duration: 400,  // animation duration in ms
       });
     }, []);
   
@@ -25,7 +25,7 @@ function About() {
       : cooperative.detail;
 
   return (
-    <div className="w-100 px-4 px-sm-3 px-md-5 py-5 bg-light my-4">
+    <div className="w-100 px-4 px-sm-3 px-md-5 py-5 bg-light my-4" style={{overflowX:'hidden'}}>
       <div className="mx-auto" style={{ maxWidth: '1100px' }}>
         <h3 className="fw-bold mb-3" style={{ color: '#001F3F' }} data-aos = 'fade-left'>
           {cooperative.topic}

@@ -40,7 +40,7 @@ function OurProducts() {
   
     useEffect(() => {
       AOS.init({
-        duration: 1000,  // animation duration in ms
+        duration: 500,  // animation duration in ms
       });
     }, []);
   
@@ -73,7 +73,7 @@ function OurProducts() {
             ref={scrollRef}
             className={`horizontal-scroll px-3 ${shouldAutoScroll ? 'overflow-auto' : ''}`}
           >
-            <div className={`d-flex gap-4 ${shouldAutoScroll ? 'flex-nowrap' : 'justify-content-center flex-wrap'}`} data-aos = 'fade-right'>
+            <div className={`d-flex gap-4 ${shouldAutoScroll ? 'flex-nowrap' : 'justify-content-center flex-wrap'}`} >
               {Products.map((product, i) => (
                
                   <Details

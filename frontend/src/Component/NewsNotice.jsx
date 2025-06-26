@@ -14,7 +14,7 @@ function NewsNotice() {
 
   useEffect(() => {
       AOS.init({
-        duration: 2000,  // animation duration in ms
+        duration: 800,  // animation duration in ms
       });
     }, []);
   
@@ -46,10 +46,10 @@ function NewsNotice() {
   };
 
   return (
-    <div className="position-relative" style={{ backgroundColor: '#E6F4EA' }}>
+    <div className="position-relative" style={{ backgroundColor: '#E6F4EA', overflowX:'hidden' }}>
       <div className="d-flex flex-column align-items-center pt-4 text-center" style={{ height: '220px' }}>
         <div className="fs-2 fw-bold" style={{color:'#001F3F'}} data-aos = 'fade-left'>News/Notice</div>
-        <div className="mb-1 text-secondary">Get Latest Updates and Achievements of our Organization</div>
+        <div className="mb-1 text-secondary" data-aos = 'fade-left'>Get Latest Updates and Achievements of our Organization</div>
       </div>
 
       <div

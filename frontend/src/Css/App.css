@@ -2,6 +2,7 @@
   text-align: center;
   background-color: #E6F4EA; /* Soft Green BG */
   color: #001F3F; /* Deep Navy Text */
+  overflow-x: hidden;
 }
 
 .App-logo {

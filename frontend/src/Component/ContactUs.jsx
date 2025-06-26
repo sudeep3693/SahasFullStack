@@ -11,7 +11,7 @@ const ContactForm = () => {
 
   useEffect(() => {
     AOS.init({
-      duration: 1000,  // animation duration in ms
+      duration: 500,  // animation duration in ms
     });
   }, []);
 
@@ -35,7 +35,7 @@ const ContactForm = () => {
 
   return (
 
-    <div className="contact-section py-5">
+    <div className="contact-section py-5" style={{overflowX:'hidden'}}>
       <Container>
         <Row className="justify-content-center mb-4 text-center">
           <Col lg={8}>
@@ -91,7 +91,7 @@ const ContactForm = () => {
                 type="submit"
                 variant="success"
                 className="px-5 py-2 text-uppercase fw-semibold"
-                data-aos = 'fade-up'
+                
               >
                 Contact Us
               </Button>

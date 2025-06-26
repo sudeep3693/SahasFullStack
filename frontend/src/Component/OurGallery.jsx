@@ -45,7 +45,7 @@ const OurGallery = () => {
 
       useEffect(() => {
         AOS.init({
-          duration: 2000,  // animation duration in ms
+          duration: 1000,  // animation duration in ms
         });
       }, []);
   // Touch support

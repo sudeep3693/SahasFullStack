@@ -26,7 +26,7 @@ function MembersDetail() {
   
     useEffect(() => {
       AOS.init({
-        duration: 800,  // animation duration in ms
+        duration: 500,  // animation duration in ms
       });
     }, []);
   
@@ -54,7 +54,7 @@ function MembersDetail() {
   }, []);
 
   return (
-    <div className="py-5 px-xs-1 px-sm-1 px-3" style={{ backgroundColor: '#f8f9fa' }}>
+    <div className="py-5 px-xs-1 px-sm-1 px-3" style={{ backgroundColor: '#f8f9fa', overflowX:'hidden' }}>
       <Container fluid>
         <Row className="mb-1 align-items-center justify-content-between px-2">
           <Col xs={12} md="auto" className="text-center mx-auto">
@@ -65,7 +65,7 @@ function MembersDetail() {
           <p className="d-flex align-items-center text-muted fs-6" data-aos = 'fade-right'>Updated as per {updatedDate} report</p>
         </Row>
 
-        <Row className="justify-content-center" ref={ref}>
+        <Row className="justify-content-center g-2" ref={ref}>
           {financialData.map((item, idx) => (
             <Col key={idx} xs={6} sm={6} md={4} lg={2} className="text-center p-3">
               <div

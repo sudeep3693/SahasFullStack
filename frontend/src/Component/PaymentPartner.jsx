@@ -11,7 +11,7 @@ function PaymentPartner() {
   const [partner, setPartner] = useState([esewa, khalti]);
  useEffect(() => {
     AOS.init({
-      duration: 1000,  // animation duration in ms
+      duration: 500,  // animation duration in ms
     });
   }, []);
   return (
@@ -23,7 +23,7 @@ function PaymentPartner() {
         </div>
       </div>
 
-      <div className="partner-container">
+      <div className="partner-container" style={{overflowX:'hidden'}}>
         <Container>
           <Row className="mb-4 text-center" style={{color:'#001F3F'}}>
             <h3 className=" fs-1 fw-bold" data-aos = 'fade-left'>Our Payment Partners</h3>
