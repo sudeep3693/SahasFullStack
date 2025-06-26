@@ -3,6 +3,9 @@ import { Container } from 'react-bootstrap';
 import Details from './ProductDetail'; 
 import Products from '../Data/ProductData';
 import '../Css/OurProducts.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // This is required
+
 
 function OurProducts() {
   const scrollRef = useRef(null);
@@ -34,6 +37,13 @@ function OurProducts() {
     return () => clearInterval(interval);
   }, [shouldAutoScroll]);
 
+  
+    useEffect(() => {
+      AOS.init({
+        duration: 1000,  // animation duration in ms
+      });
+    }, []);
+  
   return (
     <div className="position-relative" style={{ backgroundColor: '#E6F4EA' /* Soft Green BG */ }}>
       {/* Header */}
@@ -46,8 +56,8 @@ function OurProducts() {
         }}
         className="d-flex flex-column align-items-center pt-4 text-center"
       >
-        <div className="fs-2 fw-bold">Our Products</div>
-        <div>Explore products we offer </div>
+        <div className="fs-2 fw-bold" data-aos = 'fade-left'>Our Products</div>
+        <div  data-aos = 'fade-left'>Explore products we offer </div>
       </div>
 
       {/* Scrollable or Centered Cards */}
@@ -63,7 +73,7 @@ function OurProducts() {
             ref={scrollRef}
             className={`horizontal-scroll px-3 ${shouldAutoScroll ? 'overflow-auto' : ''}`}
           >
-            <div className={`d-flex gap-4 ${shouldAutoScroll ? 'flex-nowrap' : 'justify-content-center flex-wrap'}`}>
+            <div className={`d-flex gap-4 ${shouldAutoScroll ? 'flex-nowrap' : 'justify-content-center flex-wrap'}`} data-aos = 'fade-right'>
               {Products.map((product, i) => (
                
                   <Details

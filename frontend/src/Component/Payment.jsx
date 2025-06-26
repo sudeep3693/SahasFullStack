@@ -1,7 +1,18 @@
 
 import '../Css/App.css';
+import { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // This is required
 
 function Partner({ partner }) {
+
+   useEffect(() => {
+      AOS.init({
+        duration: 2000,  // animation duration in ms
+      });
+    }, []);
+  
+  
   return (
     <div
       className="partner-card"
@@ -25,6 +36,7 @@ function Partner({ partner }) {
           transition: 'transform 0.3s ease',
         }}
         className="zoom-on-hover"
+        data-aos = 'fade-up'
       />
     </div>
   );

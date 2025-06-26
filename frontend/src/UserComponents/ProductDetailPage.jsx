@@ -1,9 +1,11 @@
 import { useParams } from 'react-router-dom';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Products from '../Data/ProductData';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import '../Css/ProductDetailPage.css';
 import bgLogo from '../Images/logoOnly.png';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // This is required
 
 function DetailsPage() {
   const { id } = useParams();
@@ -11,6 +13,12 @@ function DetailsPage() {
 
   const [selectedIndex, setSelectedIndex] = useState(0);
 
+    useEffect(() => {
+      AOS.init({
+        duration: 500,  // animation duration in ms
+      });
+    }, []);
+  
   // Create an array of refs, one for each topic
   const topicRefs = useRef([]);
 
@@ -42,6 +50,7 @@ function DetailsPage() {
                 }`}
                 style={{ cursor: 'pointer' }}
                 onClick={() => handleTopicClick(i)}
+                data-aos = 'fade-right'
               >
                 <h6 className="m-0">{item.innerTitle}</h6>
               </div>
@@ -53,8 +62,8 @@ function DetailsPage() {
         <Col xs={12} md={8} style={{ maxHeight: '80vh', overflowY: 'auto' }}>
           <Card className="bg-light text-dark shadow position-relative">
             <Card.Body>
-              <h2 className="mb-3" style={{color:'#001F3F'}}>{product.productSubTitle}</h2>
-              <p className="mb-4" style={{ textAlign: 'justify' }}>
+              <h2 className="mb-3" style={{color:'#001F3F'}} data-aos = 'fade-right'>{product.productSubTitle}</h2>
+              <p className="mb-4" style={{ textAlign: 'justify' }} data-aos = 'fade-up'>
                 {product.productDescription}
               </p>
 
@@ -79,6 +88,7 @@ function DetailsPage() {
                   <div
                     className="d-flex d-md-none flex-column align-items-center mb-3"
                     style={{ textAlign: 'justify' }}
+                    
                   >
                     <img
                       src={item.productInnerImage}
@@ -87,11 +97,11 @@ function DetailsPage() {
                       style={{ width: '60px', height: '60px', objectFit: 'cover' }}
                     />
                     <h5 className="text-dark mt-2">{item.innerTitle}</h5>
-                    <p>{item.innerDescription}</p>
+                    <p style={{ whiteSpace: 'pre-line' }} >{item.innerDescription}</p>
                   </div>
 
                   {/* Desktop */}
-                  <div className="d-none d-md-flex align-items-start gap-3">
+                  <div className="d-none d-md-flex align-items-start gap-3" >
                     <img
                       src={item.productInnerImage}
                       alt="Product"
@@ -100,7 +110,7 @@ function DetailsPage() {
                     />
                     <div>
                       <h5 className="text-dark">{item.innerTitle}</h5>
-                      <p>{item.innerDescription}</p>
+                      <p style={{ whiteSpace: 'pre-line' }}>{item.innerDescription}</p>
                     </div>
                   </div>
                 </div>

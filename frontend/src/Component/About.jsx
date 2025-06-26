@@ -1,9 +1,19 @@
 import cooperative from "../Data/AboutSahas";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // This is required
 
 function About() {
   const navigate = useNavigate();
   
+   useEffect(() => {
+      AOS.init({
+        duration: 800,  // animation duration in ms
+      });
+    }, []);
+  
+
   const handleClick = () => {
     navigate(`/aboutDetail`);
   };
@@ -17,10 +27,10 @@ function About() {
   return (
     <div className="w-100 px-4 px-sm-3 px-md-5 py-5 bg-light my-4">
       <div className="mx-auto" style={{ maxWidth: '1100px' }}>
-        <h3 className="fw-bold mb-3" style={{ color: '#001F3F' }}>
+        <h3 className="fw-bold mb-3" style={{ color: '#001F3F' }} data-aos = 'fade-left'>
           {cooperative.topic}
         </h3>
-        <p className="text-muted" style={{ fontSize: '1rem', lineHeight: '1.7', color: '#28A745' }}>
+        <p className="text-muted" style={{ fontSize: '1rem', lineHeight: '1.7', color: '#28A745' }} data-aos = 'fade-up'>
           {shortDetail}
         </p>
         <button

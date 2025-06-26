@@ -3,6 +3,8 @@ import MessageBox from "./MessageBox";
 import { useState, useEffect } from "react";
 import config from "../Constants/config";
 import axios from 'axios';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // This is required
 
 function MessageContainer() {
   const [messages, setMessages] = useState([]);
@@ -11,6 +13,13 @@ function MessageContainer() {
     fetchMessages();
   }, []);
 
+   useEffect(() => {
+      AOS.init({
+        duration: 800,  // animation duration in ms
+      });
+    }, []);
+  
+  
   const fetchMessages = async () => {
     try {
       const res = await axios.get(`${config.baseUrl}/messages/all`);
@@ -39,6 +48,8 @@ function MessageContainer() {
               display: "inline-block",
               paddingBottom: "4px",
             }}
+
+            data-aos = 'fade-left'
           >
             Message from Our Team
           </h4>

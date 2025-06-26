@@ -13,6 +13,8 @@ import {
 import axios from "axios";
 import { useEffect, useState } from "react";
 import config from '../Constants/config';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // This is required
 
 const color = '#006400';
 
@@ -20,6 +22,15 @@ function MembersDetail() {
   const [financialData, setFinancialData] = useState([]);
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.3 });
   const [updatedDate,setUpdatedDate] = useState(null);
+
+  
+    useEffect(() => {
+      AOS.init({
+        duration: 800,  // animation duration in ms
+      });
+    }, []);
+  
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -47,11 +58,11 @@ function MembersDetail() {
       <Container fluid>
         <Row className="mb-1 align-items-center justify-content-between px-2">
           <Col xs={12} md="auto" className="text-center mx-auto">
-            <h2 className="fw-bold pb-2 d-inline-block" style={{color:"#001F3F"}}>
+            <h2 className="fw-bold pb-2 d-inline-block" style={{color:"#001F3F"}} data-aos = 'fade-left'>
               -Institutional Profile-
             </h2>
           </Col>
-          <p className="d-flex align-items-center text-muted fs-6">Updated as per {updatedDate} report</p>
+          <p className="d-flex align-items-center text-muted fs-6" data-aos = 'fade-right'>Updated as per {updatedDate} report</p>
         </Row>
 
         <Row className="justify-content-center" ref={ref}>
@@ -60,6 +71,7 @@ function MembersDetail() {
               <div
                 className="p-3 rounded-4 shadow-sm bg-white h-100 d-flex flex-column justify-content-center info-card align-items-center border border-2"
                 style={{ borderColor: '#0d6efd', transition: 'transform 0.3s ease-in-out' }}
+                data-aos = 'fade-up'
               >
                 {item.icon}
                 <div className="fw-bold fs-5 text-wrap-break" style={{ color }}>

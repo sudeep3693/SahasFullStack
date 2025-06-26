@@ -68,11 +68,6 @@ function NavBar({ onProductsClick, onContactClick }) {
     navigate(`/reports`);
 
   }
-  const messageFromGM = (e) => {
-    e.preventDefault();
-    handleClose();
-    navigate(`messageDetails/2`);
-  }
 
   const teamDetail = (e) => {
 
@@ -138,7 +133,6 @@ function NavBar({ onProductsClick, onContactClick }) {
               <Nav className="me-lg-5 ms-auto custom-nav">
                 <NavDropdown title="About Us" id="about-dropdown" className="custom-nav-link">
                   <NavDropdown.Item onClick={about} className="custom-dropdown-item">Introduction</NavDropdown.Item>
-                  <NavDropdown.Item onClick={messageFromGM} className="custom-dropdown-item">Message from GM</NavDropdown.Item>
                   <NavDropdown.Item onClick={teamDetail} className="custom-dropdown-item">Our Team</NavDropdown.Item>
                 </NavDropdown>
 

@@ -4,6 +4,8 @@ import { FaFilePdf } from 'react-icons/fa';
 import axios from 'axios';
 import config from "../Constants/config";
 import "../Css/Downloads.css";
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // This is required
 
 const baseURL = `${config.baseUrl}/documents`;
 
@@ -11,6 +13,12 @@ function Downloads({ type }) {
   const [documents, setDocuments] = useState([]);
   const [loading, setLoading] = useState(true);
 
+   useEffect(() => {
+      AOS.init({
+        duration: 800,  // animation duration in ms
+      });
+    }, []);
+  
   useEffect(() => {
     const fetchDocuments = async () => {
       try {
@@ -28,8 +36,8 @@ function Downloads({ type }) {
 
   return (
     <Container className="py-5">
-      <h2 className="text-center mb-4 fw-bold">Downloadable Resources</h2>
-      <p className="text-center text-muted mb-5">
+      <h2 className="text-center mb-4 fw-bold" data-aos = 'fade-right'>Downloadable Resources</h2>
+      <p className="text-center text-muted mb-5"data-aos = 'fade-right'>
         Access important documents and resources in PDF format.
       </p>
 
@@ -55,6 +63,7 @@ function Downloads({ type }) {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mt-3"
+                    data-aos = 'fade-up'
                   >
                     Download PDF
                   </Button>

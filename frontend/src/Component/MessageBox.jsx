@@ -1,8 +1,16 @@
 import { useNavigate } from "react-router-dom";
 import "../Css/MessageBox.css";
+import { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // This is required
 
 function MessageBox({ position, descriptionList, image, id }) {
   const navigate = useNavigate();
+  useEffect(() => {
+    AOS.init({
+      duration: 2000,  // animation duration in ms
+    });
+  }, []);
 
   const handleReadMore = () => {
     if (id) {
@@ -16,6 +24,7 @@ function MessageBox({ position, descriptionList, image, id }) {
       onClick={handleReadMore}
       onMouseEnter={(e) => e.currentTarget.classList.add("hovered")}
       onMouseLeave={(e) => e.currentTarget.classList.remove("hovered")}
+      data-aos = 'fade-up'
     >
       {/* Full-width Heading */}
       <div className="position-label">

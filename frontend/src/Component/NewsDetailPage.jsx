@@ -4,10 +4,18 @@ import config from '../Constants/config';
 import axios from 'axios';
 import { Container, Row, Col } from 'react-bootstrap';
 import logo from "../Images/logoOnly.png";
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // This is required
 
 function NewsDetailPage() {
   const { id } = useParams();
   const [news, setNews] = useState(null);
+  useEffect(() => {
+    AOS.init({
+      duration: 800,  // animation duration in ms
+    });
+  }, []);
+
 
   useEffect(() => {
     const fetchSingleNews = async () => {
@@ -43,7 +51,7 @@ function NewsDetailPage() {
 
       <Row className="mb-4">
         <Col>
-          <h2 className="fw-bold text-success text-center" style={{ fontSize: '2rem' }}>
+          <h2 className="fw-bold text-success text-center" style={{ fontSize: '2rem' }} data-aos = 'fade-right'>
             {news.heading}
           </h2>
         </Col>
@@ -51,7 +59,7 @@ function NewsDetailPage() {
 
       <Row className="justify-content-end mb-3">
         <Col xs="auto">
-          <p className="text-muted" style={{ whiteSpace: "pre-line", color: '#2E8B57' }}>
+          <p className="text-muted" style={{ whiteSpace: "pre-line", color: '#2E8B57' }} data-aos = 'fade-left'>
             Published on: <strong>{news.date}</strong>
           </p>
         </Col>
@@ -69,6 +77,7 @@ function NewsDetailPage() {
               position: 'relative',
               whiteSpace: 'pre-wrap', // ✅ Important: preserve whitespace and line breaks
             }}
+            data-aos = 'fade-up'
           >
             {news.description}
           </p>

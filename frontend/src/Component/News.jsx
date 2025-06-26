@@ -1,7 +1,21 @@
 import config from '../Constants/config';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // This is required
+
 
 function News({ imageName, heading, date, description, id }) {
+
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,  // animation duration in ms
+    });
+  }, []);
+
+
+
   const navigate = useNavigate();
 
   const handleReadMore = () => {
@@ -16,6 +30,7 @@ function News({ imageName, heading, date, description, id }) {
   return (
     <div
       className="rounded shadow-sm d-flex flex-column align-items-center"
+      data-aos = "fade-up"
       style={{
         backgroundColor: '#F5F5F5',
         width: '100%',

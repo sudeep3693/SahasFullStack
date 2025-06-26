@@ -21,7 +21,7 @@
   height: auto;
   aspect-ratio: 1/1;
   background-image: url('../Images/logoOnly.png');
-  background-repeat: no-repeat;
+  background-repeat: repeat-y;
   background-position: center;
   background-size: contain;
   opacity: 0.15;
@@ -34,6 +34,7 @@
 .message-oath-box p {
   position: relative;
   z-index: 1;
+  text-align: justify;
   color: #333;
   font-size: 1.05rem;
   line-height: 1.7;

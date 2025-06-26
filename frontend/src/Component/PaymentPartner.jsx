@@ -1,13 +1,19 @@
 import { Container, Row, Col } from 'react-bootstrap';
 import Partner from './Payment';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import esewa from '../Images/PaymentPartner/esewa.png';
 import khalti from '../Images/PaymentPartner/khalti.jpeg';
 import '../Css/App.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // This is required
 
 function PaymentPartner() {
   const [partner, setPartner] = useState([esewa, khalti]);
-
+ useEffect(() => {
+    AOS.init({
+      duration: 1000,  // animation duration in ms
+    });
+  }, []);
   return (
     <div className="position-relative">
       <div className="payment-header d-md-flex flex-column align-items-center text-center">
@@ -20,8 +26,8 @@ function PaymentPartner() {
       <div className="partner-container">
         <Container>
           <Row className="mb-4 text-center" style={{color:'#001F3F'}}>
-            <h3 className=" fs-1 fw-bold">Our Payment Partners</h3>
-            <p className="text-muted">Trusted gateways to make your experience smoother and secure</p>
+            <h3 className=" fs-1 fw-bold" data-aos = 'fade-left'>Our Payment Partners</h3>
+            <p className="text-muted"data-aos = 'fade-left'>Trusted gateways to make your experience smoother and secure</p>
           </Row>
 
           <Row className="g-4 justify-content-center mb-4">

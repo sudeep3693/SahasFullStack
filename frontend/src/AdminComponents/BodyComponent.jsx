@@ -1,8 +1,6 @@
 import React from "react";
-import { DiVim } from "react-icons/di";
 
-function BodyComponent({ title, description, onClick }) {
-
+function BodyComponent({ title, description, onClick, image }) {
   return (
     <div className="d-flex justify-content-center p-4">
       <div
@@ -22,9 +20,13 @@ function BodyComponent({ title, description, onClick }) {
           e.currentTarget.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.1)";
         }}
       >
-        <DiVim size={64} color="#6f42c1" />
-        <div className="fs-3 fw-bold text-primary">{title}</div>
-        <div className="fs-5 text-muted">{description}</div>
+        <img
+          src={image}
+          alt={title}
+          style={{ width: "64px", height: "64px", objectFit: "contain", marginBottom: "10px" }}
+        />
+        <div className="fs-4 fw-bold text-primary">{title}</div>
+        <div className="fs-6 text-muted">{description}</div>
       </div>
     </div>
   );

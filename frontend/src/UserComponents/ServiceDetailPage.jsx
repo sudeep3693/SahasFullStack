@@ -3,6 +3,9 @@ import { useParams } from 'react-router-dom';
 import Services from '../Data/ServiceData';
 import '../Css/Service.css';
 import bgLogo from '../Images/logoOnly.png';
+import { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // This is required
 
 function ServiceDetailsPage() {
     const { id } = useParams();
@@ -10,6 +13,12 @@ function ServiceDetailsPage() {
 
     const paragraphs = service.description.split('\n\n');
 
+      useEffect(() => {
+        AOS.init({
+          duration: 500,  // animation duration in ms
+        });
+      }, []);
+    
     if (!service) {
         return <h2 className="text-center text-danger my-5">Service not found</h2>;
     }
@@ -18,13 +27,13 @@ function ServiceDetailsPage() {
         <>
             <Container className="py-4">
                 {/* Title */}
-                <h2 className="text-center fw-bold mb-4">{service.title}</h2>
+                <h2 className="text-center fw-bold mb-4" data-aos = 'fade-right'>{service.title}</h2>
 
                 <Row className="g-4 align-items-start">
                     {/* Image Section */}
                     <Col xs={12} md={5}>
                         <Card className="shadow border-0">
-                            <div className="overflow-hidden rounded">
+                            <div className="overflow-hidden rounded" data-aos = 'fade-up'>
                                 <img
                                     src={service.image}
                                     alt="Service"
@@ -53,7 +62,7 @@ function ServiceDetailsPage() {
                                 </div>
                                 {
                                     paragraphs.map((para, index) => (
-                                        <Card.Text key={index} className="fs-5 text-muted">
+                                        <Card.Text key={index} className="fs-5 text-muted" style={{textAlign: 'justify'}} data-aos = 'fade-up'>
                                             {para}
                                         </Card.Text>
                                     ))

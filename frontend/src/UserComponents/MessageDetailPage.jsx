@@ -5,11 +5,21 @@ import MessageBox from "../Component/MessageBox";
 import config from "../Constants/config";
 import axios from "axios";
 import "../Css/MessageDetailPage.css";
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // This is required
 
 function MessageDetailPage() {
   const { id } = useParams();
   const [message, setMessage] = useState(null);
   const [loading, setLoading] = useState(true);
+
+
+    useEffect(() => {
+      AOS.init({
+        duration: 500,  // animation duration in ms
+      });
+    }, []);
+  
 
   useEffect(() => {
     fetchMessage();
@@ -55,8 +65,8 @@ function MessageDetailPage() {
 
           <Col sm={12} md={8}>
             <div className="message-oath-box p-4">
-              <h4 className="mb-3">Message</h4>
-              <p className="text-muted" style={{ whiteSpace: "pre-line" }}>
+              <h4 className="mb-3" data-aos = 'fade-right'>Message</h4>
+              <p className="text-muted" style={{ whiteSpace: "pre-line" }} data-aos = 'fade-up'>
                 {message.message}
               </p>
             </div>

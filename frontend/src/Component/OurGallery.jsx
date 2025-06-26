@@ -2,6 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import useGallaryImage from '../AdminComponents/hooks/useGallaryImage.jsx';
 import '../Css/OurGallery.css';
 import config from '../Constants/config.js';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // This is required
+
 const OurGallery = () => {
   const { data: images, loading, error } = useGallaryImage();
   const [selectedIndex, setSelectedIndex] = useState(null);
@@ -34,10 +37,17 @@ const OurGallery = () => {
       }
     };
 
+    
+
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [selectedIndex]);
 
+      useEffect(() => {
+        AOS.init({
+          duration: 2000,  // animation duration in ms
+        });
+      }, []);
   // Touch support
   const handleTouchStart = (e) => {
     startX.current = e.touches[0].clientX;
@@ -90,6 +100,7 @@ const OurGallery = () => {
               src={`${config.baseUrl}/uploads/gallery/${images[selectedIndex]}`}
               alt={`modal-img-${selectedIndex}`}
               className="modal-image"
+              data-aos = "fade-up"
             />
             <div className="modal-buttons">
               <button onClick={showPrev}>&#10094;</button>

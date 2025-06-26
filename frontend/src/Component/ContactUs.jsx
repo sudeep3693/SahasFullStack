@@ -1,10 +1,19 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import emailjs from '@emailjs/browser';
 import '../Css/Contact.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // This is required
+
 
 const ContactForm = () => {
   const formRef = useRef();
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,  // animation duration in ms
+    });
+  }, []);
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -30,8 +39,8 @@ const ContactForm = () => {
       <Container>
         <Row className="justify-content-center mb-4 text-center">
           <Col lg={8}>
-            <h2 className="fw-bold mb-2" style={{color:"#001F3F"}}>Contact Us</h2>
-            <p className="text-muted">
+            <h2 className="fw-bold mb-2" style={{ color: "#001F3F" }} data-aos = 'fade-left'>Contact Us</h2>
+            <p className="text-muted" data-aos = 'fade-left'>
               Get connected with us by simply filling up info below.
             </p>
           </Col>
@@ -82,6 +91,7 @@ const ContactForm = () => {
                 type="submit"
                 variant="success"
                 className="px-5 py-2 text-uppercase fw-semibold"
+                data-aos = 'fade-up'
               >
                 Contact Us
               </Button>
