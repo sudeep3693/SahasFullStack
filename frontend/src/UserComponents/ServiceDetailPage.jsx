@@ -8,6 +8,8 @@ function ServiceDetailsPage() {
     const { id } = useParams();
     const service = Services.find((s) => s.id === id);
 
+    const paragraphs = service.description.split('\n\n');
+
     if (!service) {
         return <h2 className="text-center text-danger my-5">Service not found</h2>;
     }
@@ -49,7 +51,15 @@ function ServiceDetailsPage() {
                                         className="watermark-img"
                                     />
                                 </div>
-                                <Card.Text className="fs-5 text-muted">{service.description}</Card.Text>
+                                {
+                                    paragraphs.map((para, index) => (
+                                        <Card.Text key={index} className="fs-5 text-muted">
+                                            {para}
+                                        </Card.Text>
+                                    ))
+
+
+                                }
                             </Card.Body>
 
                             {service.link1 && service.link2 && (

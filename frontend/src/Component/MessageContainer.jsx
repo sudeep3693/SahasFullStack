@@ -55,7 +55,6 @@ function MessageContainer() {
             `Name: ${msg.name}`,
             `Contact: ${msg.contact}`,
             `Email: ${msg.email}`,
-            ...msg.message.split('\n') // support paragraphs
           ]}
         />
       ))}

@@ -27,7 +27,7 @@ function NewsDetailPage() {
 
   return (
     <Container className="py-5 position-relative" style={{ minHeight: '100vh' }}>
-       <img
+      <img
         src={logo}
         alt="watermark"
         style={{
@@ -39,7 +39,7 @@ function NewsDetailPage() {
           zIndex: 0,
           width: '50%',
         }}
-      /> 
+      />
 
       <Row className="mb-4">
         <Col>
@@ -51,7 +51,7 @@ function NewsDetailPage() {
 
       <Row className="justify-content-end mb-3">
         <Col xs="auto">
-          <p className="text-muted" style={{ color: '#2E8B57' }}>
+          <p className="text-muted" style={{ whiteSpace: "pre-line", color: '#2E8B57' }}>
             Published on: <strong>{news.date}</strong>
           </p>
         </Col>
@@ -67,10 +67,12 @@ function NewsDetailPage() {
               lineHeight: '1.8',
               zIndex: 1,
               position: 'relative',
+              whiteSpace: 'pre-wrap', // ✅ Important: preserve whitespace and line breaks
             }}
           >
             {news.description}
           </p>
+
         </Col>
       </Row>
 

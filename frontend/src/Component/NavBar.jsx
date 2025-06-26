@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -33,7 +33,7 @@ function NavBar({ onProductsClick, onContactClick }) {
     }
   };
 
-  const handleContactClick= (e) => {
+  const handleContactClick = (e) => {
     e.preventDefault();
     handleClose();
 
@@ -46,47 +46,55 @@ function NavBar({ onProductsClick, onContactClick }) {
     }
   };
 
-  const handleDownloadsClick = (e) =>{
+  const handleDownloadsClick = (e) => {
 
     e.preventDefault();
     handleClose();
-     navigate(`/downloads`); 
+    navigate(`/downloads`);
 
   }
-   const handleGalleryClick = (e) =>{
+  const handleGalleryClick = (e) => {
 
     e.preventDefault();
     handleClose();
-      navigate(`/gallery`);
+    navigate(`/gallery`);
 
   }
 
-   const handleReportClick = (e) =>{
+  const handleReportClick = (e) => {
 
     e.preventDefault();
     handleClose();
-      navigate(`/reports`);
+    navigate(`/reports`);
 
   }
-  const messageFromGM = ()=>{
-
+  const messageFromGM = (e) => {
+    e.preventDefault();
+    handleClose();
     navigate(`messageDetails/2`);
   }
 
-    const teamDetail = ()=>{
+  const teamDetail = (e) => {
 
+    e.preventDefault();
+    handleClose();
     navigate(`team`);
   }
 
 
-  const handleHome =(e)=>
-  {
-
+  const handleHome = (e) => {
+    handleClose();
     e.preventDefault();
     navigate(`/`);
   }
 
-    const { data: formData, loading, error } = useBasicDetails();
+  const about = (e) => {
+    handleClose();
+    e.preventDefault();
+    navigate(`/aboutDetail`);
+  }
+
+  const { data: formData, loading, error } = useBasicDetails();
 
   if (loading) return null;
   if (error) return <p className="text-danger text-center">Error loading contact details.</p>;
@@ -101,7 +109,7 @@ function NavBar({ onProductsClick, onContactClick }) {
               src={logo}
               alt="Sahas Cooperative Logo"
               className="img-fluid"
-              style={{ maxHeight: '110px', width:'700px' }}
+              style={{ maxHeight: '110px', width: '700px' }}
             />
           </Navbar.Brand>
 
@@ -129,10 +137,9 @@ function NavBar({ onProductsClick, onContactClick }) {
             <Offcanvas.Body>
               <Nav className="me-lg-5 ms-auto custom-nav">
                 <NavDropdown title="About Us" id="about-dropdown" className="custom-nav-link">
-                  <NavDropdown.Item href="#introduction" className="custom-dropdown-item">Introduction</NavDropdown.Item>
+                  <NavDropdown.Item onClick={about} className="custom-dropdown-item">Introduction</NavDropdown.Item>
                   <NavDropdown.Item onClick={messageFromGM} className="custom-dropdown-item">Message from GM</NavDropdown.Item>
-                  <NavDropdown.Item onClick = {teamDetail} className="custom-dropdown-item">Our Team</NavDropdown.Item>
-                  <NavDropdown.Item href="#branches" className="custom-dropdown-item">Branches</NavDropdown.Item>
+                  <NavDropdown.Item onClick={teamDetail} className="custom-dropdown-item">Our Team</NavDropdown.Item>
                 </NavDropdown>
 
                 <Nav.Link
@@ -156,7 +163,7 @@ function NavBar({ onProductsClick, onContactClick }) {
                   onClick={handleGalleryClick}
                   className="custom-nav-link fs-6 custom-button-link"
                 >
-                 Our Gallery
+                  Our Gallery
                 </Nav.Link>
 
                 <Nav.Link
@@ -164,7 +171,7 @@ function NavBar({ onProductsClick, onContactClick }) {
                   onClick={handleReportClick}
                   className="custom-nav-link fs-6 custom-button-link"
                 >
-                Reports
+                  Reports
                 </Nav.Link>
 
 
@@ -173,7 +180,7 @@ function NavBar({ onProductsClick, onContactClick }) {
                   onClick={handleDownloadsClick}
                   className="custom-nav-link fs-6 custom-button-link"
                 >
-                 Downloads
+                  Downloads
                 </Nav.Link>
               </Nav>
 

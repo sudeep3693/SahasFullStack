@@ -122,6 +122,7 @@ function MessageManager() {
                     placeholder="Enter message..."
                     required
                     className="message-paragraph"
+                    style={{width:'100%'}}
                 />
                 <input
                     type="file"

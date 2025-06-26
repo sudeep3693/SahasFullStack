@@ -31,6 +31,7 @@ function AllNews() {
               heading={item.heading}
               date={item.date}
               description={item.description}
+              id = {item.id}
             />
           </Col>
         ))}

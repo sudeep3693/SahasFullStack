@@ -61,5 +61,7 @@
   color: #28A745; /* Deep Navy */
   font-size: 0.9rem;
   font-weight: 400;
+  text-wrap: wrap;
+  word-wrap: wrap;
   line-height: 1.3;
 }
