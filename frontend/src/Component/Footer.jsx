@@ -4,6 +4,7 @@ import '../Css/Footer.css';
 import cooperative from '../Data/AboutSahas';
 import { useNavigate } from 'react-router-dom';
 import useBasicDetails from '../FetchData/useBasicDetails';
+import SocialIcons from './SocialMedia';
 
 const Footer = () => {
   const navigate = useNavigate();
@@ -40,6 +41,7 @@ const Footer = () => {
             <p className="footer-text">
               {cooperative.shortDetail}
             </p>
+            <div style={{float:'left'}}><SocialIcons/></div>
           </Col>
 
           <Col xs={12} sm={6} md={6} lg={4}>
