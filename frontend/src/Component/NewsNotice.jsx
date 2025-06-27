@@ -61,7 +61,7 @@ function NewsNotice() {
         }}
       >
         <Container>
-          <Row className="g-4 justify-content-center mb-4">
+          <Row className="g-4 justify-content-center mb-4" style={{overflow:'hidden'}}>
             {newsList.slice(0, visibleNews).map((item, i) => (
               <Col key={item.id} xs={12} sm={6} md={4} lg={3} className="text-center">
                 <News

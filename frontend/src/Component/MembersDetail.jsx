@@ -54,7 +54,7 @@ function MembersDetail() {
   }, []);
 
   return (
-    <div className="py-5 px-xs-1 px-sm-1 px-3" style={{ backgroundColor: '#f8f9fa', overflowX:'hidden' }}>
+    <div className="py-5 px-xs-1 px-sm-1 px-3" style={{ backgroundColor: '#f8f9fa', overflow:'hidden' }}>
       <Container fluid>
         <Row className="mb-1 align-items-center justify-content-between px-2">
           <Col xs={12} md="auto" className="text-center mx-auto">

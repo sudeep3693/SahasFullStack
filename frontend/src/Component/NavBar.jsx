@@ -5,7 +5,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import logo from '../Images/dallo.png';
+import logo from '../Images/headerLogo.png';
 import SocialIcons from '../Component/SocialMedia';
 import ContactIcons from '../Component/HeaderContact';
 import '../Css/App.css';
@@ -95,7 +95,7 @@ function NavBar({ onProductsClick, onContactClick }) {
   if (error) return <p className="text-danger text-center">Error loading contact details.</p>;
 
   return (
-    <Navbar expand="md" className="bg-body-tertiary">
+    <Navbar expand="md" className={`navbar-main ${showOffcanvas ? 'navbar-dark-green' : ''}`}>
       <Container fluid className="d-flex justify-content-between align-items-center px-3">
 
         <Container fluid className="d-flex justify-content-between align-items-center px-3">
@@ -103,9 +103,9 @@ function NavBar({ onProductsClick, onContactClick }) {
             <img
               src={logo}
               alt="Sahas Cooperative Logo"
-              className="img-fluid"
-              style={{ maxHeight: '110px', width: '700px' }}
+              className={`img-fluid ${showOffcanvas ? 'logo-large-mobile' : 'logo-default'}`}
             />
+
           </Navbar.Brand>
 
           <Navbar.Toggle
@@ -122,7 +122,9 @@ function NavBar({ onProductsClick, onContactClick }) {
             placement="end"
             show={showOffcanvas}
             onHide={handleClose}
+            className="offcanvas-dark-green"
           >
+
             <Offcanvas.Header closeButton>
               <Offcanvas.Title id="offcanvasNavbarLabel">
                 <SocialIcons />
